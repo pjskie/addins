@@ -1,4 +1,4 @@
-﻿
+﻿Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Data.SqlTypes
 Imports System.Data.OleDb
@@ -15,6 +15,9 @@ Public Class frmCashReceiptJournal
     Private myCmd As SqlCommand
     Private myReader As SqlDataReader
     Private results As String
+
+    Dim connectionString As String = "Server=172.16.50.5;Database=BUILDMORE_MAIN_DB;User Id=sa;Password=Bu1ldm0r3.SBO"
+    Dim connection As New SqlConnection(connectionString)
 
     Private Sub RadioPosting_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioDocument.CheckedChanged
         PDFrom.Enabled = False
@@ -58,6 +61,7 @@ Public Class frmCashReceiptJournal
         If CheckedListBox1.CheckedItems.Count > 0 Then
 
             Dim reportType As String = "Cash Receipts Journal"
+            Dim form As Form = Me
 
             Dim DateType As String
             Dim DateFrom As Date
@@ -86,6 +90,29 @@ Public Class frmCashReceiptJournal
         Else
             MessageBox.Show("Please Select Branch")
         End If
+
+    End Sub
+
+    Private Sub frmCashReceiptJournal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        connection.Open()
+        Dim command As New SqlCommand("SELECT BPLNAME from OBPL 
+        WHERE MAINBPL = 'N' AND DISABLED = 'N'
+        ORDER BY BPLID ASC", connection)
+        Dim reader As SqlDataReader = command.ExecuteReader()
+        Dim dt As New DataTable()
+        dt.Load(reader)
+        Dim index As Integer = 1
+        For Each dRow As DataRow In dt.Rows
+
+            'If dRow.Item("Levels") = 1 Then
+            '    CheckedListBox1.Items.Add("-" + dRow.Item("AcctName"))
+            'Else
+            CheckedListBox1.Items.Add(dRow.Item("BPLName"))
+            'End If
+
+        Next
+        connection.Close()
 
     End Sub
 End Class

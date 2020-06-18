@@ -163,3 +163,4 @@ D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.SAWT.resources
 D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.SLS.resources
 D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.ST.resources
 D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmGeneralLedger.resources
+D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmCashDisbursmentJournal.resources
