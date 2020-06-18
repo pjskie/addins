@@ -169,6 +169,7 @@ D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.SAWT.resources
 D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.SLS.resources
 D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.ST.resources
 D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmGeneralLedger.resources
+<<<<<<< HEAD
 >>>>>>> 8f89108fa40d6eb277f3ea80053a2c93608cbbba
 C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\BIRAddins.exe.manifest
 C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\BIRAddins.application
@@ -218,3 +219,6 @@ C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.ST.resource
 C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.vbproj.GenerateResource.Cache
 C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.exe.manifest
 C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.application
+=======
+D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmCashDisbursmentJournal.resources
+>>>>>>> 81214e65da12fecfbd0ca8e797635c3a676b1194

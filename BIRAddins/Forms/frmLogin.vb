@@ -3,7 +3,7 @@
     Public user As String
 
     Private Sub frmLogin_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        If txtPassword.Text = "hex" Or txtPassword.Text = "AP" Then
+        If txtPassword.Text = "hex" Or txtPassword.Text = "1" Then
         Else
             Application.Exit()
         End If
@@ -22,7 +22,7 @@
         If txtPassword.Text = "hex" Then
             user = "A/P"
             Me.Hide()
-        ElseIf txtPassword.Text = "Managerxz" Then
+        ElseIf txtPassword.Text = "1" Then
             user = "Manager"
             Me.Hide()
         ElseIf txtPassword.Text = "AP" Then

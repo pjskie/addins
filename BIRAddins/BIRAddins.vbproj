@@ -114,6 +114,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\FilterReport.vb" />
+    <Compile Include="Forms\frmCashDisbursmentJournal.Designer.vb">
+      <DependentUpon>frmCashDisbursmentJournal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCashDisbursmentJournal.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmCashReceiptJournal.Designer.vb">
       <DependentUpon>frmCashReceiptJournal.vb</DependentUpon>
     </Compile>
@@ -231,6 +237,9 @@
     <Compile Include="pj\utilities\query.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmCashDisbursmentJournal.resx">
+      <DependentUpon>frmCashDisbursmentJournal.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCashReceiptJournal.resx">
       <DependentUpon>frmCashReceiptJournal.vb</DependentUpon>
     </EmbeddedResource>

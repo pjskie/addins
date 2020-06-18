@@ -41,13 +41,13 @@
         ElseIf TreeView1.SelectedNode.Text.Equals("Summary List of Purchases") Then
             PT.MdiParent = frmMain
             PT.Show()
+        ElseIf TreeView1.SelectedNode.Text.Equals("Cash Disbursment Journal") Then
+            frmCashDisbursmentJournal.MdiParent = frmMain
+            frmCashDisbursmentJournal.Show()
         Else
 
         End If
 
     End Sub
 
-    Private Sub frmTreeView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

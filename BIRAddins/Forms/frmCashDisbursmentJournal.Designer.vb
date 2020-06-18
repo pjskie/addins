@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmCashReceiptJournal
+Partial Class frmCashDisbursmentJournal
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,22 +22,55 @@ Partial Class frmCashReceiptJournal
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCashReceiptJournal))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCashDisbursmentJournal))
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
         Me.RadioDocument = New System.Windows.Forms.RadioButton()
+        Me.btnGenerateReport = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.RadioPosting = New System.Windows.Forms.RadioButton()
         Me.DDFrom = New System.Windows.Forms.DateTimePicker()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.DDTo = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.PDFrom = New System.Windows.Forms.DateTimePicker()
         Me.PDTo = New System.Windows.Forms.DateTimePicker()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.btnGenerateReport = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.CheckedListBox1)
+        Me.GroupBox1.Controls.Add(Me.RadioDocument)
+        Me.GroupBox1.Controls.Add(Me.btnGenerateReport)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.RadioPosting)
+        Me.GroupBox1.Controls.Add(Me.DDFrom)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.DDTo)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.PDFrom)
+        Me.GroupBox1.Controls.Add(Me.PDTo)
+        Me.GroupBox1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(950, 114)
+        Me.GroupBox1.TabIndex = 16
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Search: Cash Disbursment Journal"
+        '
+        'CheckedListBox1
+        '
+        Me.CheckedListBox1.CheckOnClick = True
+        Me.CheckedListBox1.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckedListBox1.FormattingEnabled = True
+        Me.CheckedListBox1.Items.AddRange(New Object() {"KORONADAL BRANCH", "GENSAN BRANCH", "POLOMOLOK BRANCH"})
+        Me.CheckedListBox1.Location = New System.Drawing.Point(460, 36)
+        Me.CheckedListBox1.Name = "CheckedListBox1"
+        Me.CheckedListBox1.Size = New System.Drawing.Size(280, 67)
+        Me.CheckedListBox1.TabIndex = 10
+        Me.CheckedListBox1.ThreeDCheckBoxes = True
         '
         'RadioDocument
         '
@@ -50,6 +83,27 @@ Partial Class frmCashReceiptJournal
         Me.RadioDocument.TabStop = True
         Me.RadioDocument.Text = "Document Date:"
         Me.RadioDocument.UseVisualStyleBackColor = True
+        '
+        'btnGenerateReport
+        '
+        Me.btnGenerateReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnGenerateReport.Font = New System.Drawing.Font("Calibri", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGenerateReport.Location = New System.Drawing.Point(746, 36)
+        Me.btnGenerateReport.Name = "btnGenerateReport"
+        Me.btnGenerateReport.Size = New System.Drawing.Size(198, 67)
+        Me.btnGenerateReport.TabIndex = 12
+        Me.btnGenerateReport.Text = "Generate Report"
+        Me.btnGenerateReport.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(400, 38)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(54, 18)
+        Me.Label4.TabIndex = 11
+        Me.Label4.Text = "Branch:"
         '
         'RadioPosting
         '
@@ -74,6 +128,16 @@ Partial Class frmCashReceiptJournal
         Me.DDFrom.Size = New System.Drawing.Size(110, 26)
         Me.DDFrom.TabIndex = 3
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(259, 70)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(21, 18)
+        Me.Label3.TabIndex = 8
+        Me.Label3.Text = "to"
+        '
         'DDTo
         '
         Me.DDTo.CalendarFont = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -84,6 +148,16 @@ Partial Class frmCashReceiptJournal
         Me.DDTo.Name = "DDTo"
         Me.DDTo.Size = New System.Drawing.Size(110, 26)
         Me.DDTo.TabIndex = 4
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(259, 42)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(21, 18)
+        Me.Label2.TabIndex = 7
+        Me.Label2.Text = "to"
         '
         'PDFrom
         '
@@ -107,79 +181,6 @@ Partial Class frmCashReceiptJournal
         Me.PDTo.Size = New System.Drawing.Size(110, 26)
         Me.PDTo.TabIndex = 6
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(259, 42)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(21, 18)
-        Me.Label2.TabIndex = 7
-        Me.Label2.Text = "to"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(259, 70)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(21, 18)
-        Me.Label3.TabIndex = 8
-        Me.Label3.Text = "to"
-        '
-        'CheckedListBox1
-        '
-        Me.CheckedListBox1.CheckOnClick = True
-        Me.CheckedListBox1.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Location = New System.Drawing.Point(460, 36)
-        Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.Size = New System.Drawing.Size(280, 67)
-        Me.CheckedListBox1.TabIndex = 10
-        Me.CheckedListBox1.ThreeDCheckBoxes = True
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(400, 38)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(54, 18)
-        Me.Label4.TabIndex = 11
-        Me.Label4.Text = "Branch:"
-        '
-        'btnGenerateReport
-        '
-        Me.btnGenerateReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnGenerateReport.Font = New System.Drawing.Font("Calibri", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle))
-        Me.btnGenerateReport.Location = New System.Drawing.Point(746, 36)
-        Me.btnGenerateReport.Name = "btnGenerateReport"
-        Me.btnGenerateReport.Size = New System.Drawing.Size(198, 67)
-        Me.btnGenerateReport.TabIndex = 12
-        Me.btnGenerateReport.Text = "Generate Report"
-        Me.btnGenerateReport.UseVisualStyleBackColor = True
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.CheckedListBox1)
-        Me.GroupBox1.Controls.Add(Me.RadioDocument)
-        Me.GroupBox1.Controls.Add(Me.btnGenerateReport)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.RadioPosting)
-        Me.GroupBox1.Controls.Add(Me.DDFrom)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.DDTo)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.PDFrom)
-        Me.GroupBox1.Controls.Add(Me.PDTo)
-        Me.GroupBox1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(950, 114)
-        Me.GroupBox1.TabIndex = 13
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Search: Cash Receipts Journal"
-        '
         'CrystalReportViewer1
         '
         Me.CrystalReportViewer1.ActiveViewIndex = -1
@@ -195,36 +196,37 @@ Partial Class frmCashReceiptJournal
         Me.CrystalReportViewer1.ShowParameterPanelButton = False
         Me.CrystalReportViewer1.ShowRefreshButton = False
         Me.CrystalReportViewer1.Size = New System.Drawing.Size(950, 248)
-        Me.CrystalReportViewer1.TabIndex = 14
+        Me.CrystalReportViewer1.TabIndex = 17
         Me.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
-        'frmCashReceiptJournal
+        'frmCashDisbursmentJournal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(974, 392)
-        Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "frmCashReceiptJournal"
+        Me.Name = "frmCashDisbursmentJournal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "BOA - Cash Receipts Journal"
+        Me.Text = "BOA - Cash Disbursment Journal"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents RadioDocument As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioPosting As System.Windows.Forms.RadioButton
-    Friend WithEvents DDFrom As System.Windows.Forms.DateTimePicker
-    Friend WithEvents DDTo As System.Windows.Forms.DateTimePicker
-    Friend WithEvents PDFrom As System.Windows.Forms.DateTimePicker
-    Friend WithEvents PDTo As System.Windows.Forms.DateTimePicker
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents CheckedListBox1 As System.Windows.Forms.CheckedListBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents btnGenerateReport As System.Windows.Forms.Button
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents CheckedListBox1 As CheckedListBox
+    Friend WithEvents RadioDocument As RadioButton
+    Friend WithEvents btnGenerateReport As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents RadioPosting As RadioButton
+    Friend WithEvents DDFrom As DateTimePicker
+    Friend WithEvents Label3 As Label
+    Friend WithEvents DDTo As DateTimePicker
+    Friend WithEvents Label2 As Label
+    Friend WithEvents PDFrom As DateTimePicker
+    Friend WithEvents PDTo As DateTimePicker
     Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
 End Class

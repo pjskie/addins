@@ -28,6 +28,7 @@ Public Class FilterReport
         Dim crParameterFieldDefinition As ParameterFieldDefinition
         Dim crParameterValues As New ParameterValues
         Dim crParameterDiscreteValue As New ParameterDiscreteValue
+        Dim SSPO = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
 
         crParameterDiscreteValue.Value = DateType
         crParameterFieldDefinitions =
@@ -62,34 +63,22 @@ Public Class FilterReport
         crParameterValues.Add(crParameterDiscreteValue)
         crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
 
-        'Dim Count As Integer = CheckedListBox1.SelectedItems.Count
-        'Dim Count2 As Integer = CheckedListBox1.Items.Count
-        'If CheckedListBox1.CheckedItems.Count > 0 Then
-
-        '    crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields
-        '    crParameterFieldDefinition = crParameterFieldDefinitions.Item("Branch")
-        '    For i = 0 To Count - 1
-        '        If i > 0 Then
-        '            crParameterDiscreteValue = Nothing
-        '        End If
-        '        crParameterDiscreteValue = New ParameterDiscreteValue
-        '        crParameterDiscreteValue.Value = CheckedListBox1.CheckedItems(i)
-        '        crParameterValues.Add(crParameterDiscreteValue)
-        '    Next
-
-        crParameterDiscreteValue.Value = Branch
-        crParameterFieldDefinitions =
-            CryRpt.DataDefinition.ParameterFields
-        crParameterFieldDefinition =
-            crParameterFieldDefinitions.Item("Branch")
+        crParameterFieldDefinitions = CryRpt.DataDefinition.ParameterFields
+        crParameterFieldDefinition = crParameterFieldDefinitions("AccountName")
         crParameterValues = crParameterFieldDefinition.CurrentValues
 
+        Dim Count As Integer = frmGeneralLedger.CheckedListBox1.CheckedItems.Count
 
-        crParameterValues.Clear()
-        crParameterValues.Add(crParameterDiscreteValue)
+        For i = 0 To Count - 1
+            If i > 0 Then
+                crParameterDiscreteValue = Nothing
+            End If
+            crParameterDiscreteValue = New ParameterDiscreteValue()
+            'crParameterDiscreteValue.Value = form.CheckedListBox1.CheckedItems(i)
+            crParameterValues.Add(crParameterDiscreteValue)
+        Next
         crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
-        'Else
-        'End If
+
 
     End Sub
 
@@ -130,5 +119,61 @@ Public Class FilterReport
 
     End Sub
 
+    Public Sub GeneralJournal(ByVal DateFrom As Date,
+                          ByVal DateTo As Date,
+                          ByVal CryRpt As ReportDocument)
+
+        Dim crTableLogoninfos As New TableLogOnInfos
+        Dim crTableLogoninfo As New TableLogOnInfo
+        Dim crConnectionInfo As New ConnectionInfo
+
+        Dim crParameterFieldDefinitions As ParameterFieldDefinitions
+        Dim crParameterFieldDefinition As ParameterFieldDefinition
+        Dim crParameterValues As New ParameterValues
+        Dim crParameterDiscreteValue As New ParameterDiscreteValue
+        Dim SSPO = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+
+        frmGeneralLedger.CrystalReportViewer1.ReportSource = Nothing
+        frmGeneralLedger.CrystalReportViewer1.Refresh()
+
+        crParameterDiscreteValue.Value = DateFrom
+        crParameterFieldDefinitions =
+            CryRpt.DataDefinition.ParameterFields
+        crParameterFieldDefinition =
+            crParameterFieldDefinitions.Item("DateFrom")
+        crParameterValues = crParameterFieldDefinition.CurrentValues
+
+        crParameterValues.Clear()
+        crParameterValues.Add(crParameterDiscreteValue)
+        crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+
+        crParameterDiscreteValue.Value = DateTo
+        crParameterFieldDefinitions =
+            CryRpt.DataDefinition.ParameterFields
+        crParameterFieldDefinition =
+            crParameterFieldDefinitions.Item("DateTo")
+        crParameterValues = crParameterFieldDefinition.CurrentValues
+
+        crParameterValues.Clear()
+        crParameterValues.Add(crParameterDiscreteValue)
+        crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+
+        crParameterFieldDefinitions = CryRpt.DataDefinition.ParameterFields
+        crParameterFieldDefinition = crParameterFieldDefinitions("AccountName")
+        crParameterValues = crParameterFieldDefinition.CurrentValues
+
+        Dim Count As Integer = frmGeneralLedger.CheckedListBox1.CheckedItems.Count
+
+        For i = 0 To Count - 1
+            If i > 0 Then
+                crParameterDiscreteValue = Nothing
+            End If
+            crParameterDiscreteValue = New ParameterDiscreteValue()
+            crParameterDiscreteValue.Value = frmGeneralLedger.CheckedListBox1.CheckedItems(i)
+            crParameterValues.Add(crParameterDiscreteValue)
+        Next
+        crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+
+    End Sub
 
 End Class
