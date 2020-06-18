@@ -41,8 +41,6 @@ D:\Projects\BIRAddins\BIRAddins\bin\Debug\CrystalDecisions.CrystalReports.Engine
 D:\Projects\BIRAddins\BIRAddins\bin\Debug\CrystalDecisions.ReportSource.dll
 D:\Projects\BIRAddins\BIRAddins\bin\Debug\CrystalDecisions.Shared.dll
 D:\Projects\BIRAddins\BIRAddins\bin\Debug\CrystalDecisions.Windows.Forms.dll
-D:\Projects\BIRAddins\BIRAddins\bin\Debug\Microsoft.ReportViewer.Common.dll
-D:\Projects\BIRAddins\BIRAddins\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 D:\Projects\BIRAddins\BIRAddins\bin\Debug\ShockwaveFlashObjects.dll
 D:\Projects\BIRAddins\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
 D:\Projects\BIRAddins\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
@@ -160,7 +158,15 @@ D:\git\birAddins\BIRAddins\obj\x86\Debug\BIRAddins.exe
 D:\git\birAddins\BIRAddins\obj\x86\Debug\BIRAddins.xml
 D:\git\birAddins\BIRAddins\obj\x86\Debug\BIRAddins.pdb
 D:\git\birAddins\BIRAddins\obj\x86\Debug\BIRAddins.vbprojResolveAssemblyReference.cache
+<<<<<<< HEAD
 C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\BIRAddins.exe.config
 C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.exe
 C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.xml
 C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.pdb
+=======
+D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.PT.resources
+D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.SAWT.resources
+D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.SLS.resources
+D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.ST.resources
+D:\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmGeneralLedger.resources
+>>>>>>> 8f89108fa40d6eb277f3ea80053a2c93608cbbba

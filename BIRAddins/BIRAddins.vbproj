@@ -144,6 +144,12 @@
     <Compile Include="Forms\frmDebitMemoRegsiter.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmGeneralLedger.Designer.vb">
+      <DependentUpon>frmGeneralLedger.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGeneralLedger.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmInventoryBooks.Designer.vb">
       <DependentUpon>frmInventoryBooks.vb</DependentUpon>
     </Compile>
@@ -237,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDebitMemoRegsiter.resx">
       <DependentUpon>frmDebitMemoRegsiter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGeneralLedger.resx">
+      <DependentUpon>frmGeneralLedger.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmInventoryBooks.resx">
       <DependentUpon>frmInventoryBooks.vb</DependentUpon>
