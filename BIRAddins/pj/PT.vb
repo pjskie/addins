@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Data
 Imports System.Data.SqlTypes
 Imports System.Data.OleDb
 Imports System
@@ -13,6 +14,7 @@ Public Class PT
     Private myCmd As SqlCommand
     Private myReader As SqlDataReader
     Private results As String
+    Private quer As New query
 
     ' Posting Date Paremeter Validations
     Private Sub DDFrom_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DDFrom.ValueChanged
@@ -42,5 +44,11 @@ Public Class PT
         q.generateSalesTrans(DateFrom, DateTo, brnch, cryRpt)
         cr.ReportSource = cryRpt
         cr.Refresh()
+    End Sub
+
+    Private Sub PT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Clear list box
+        clbBranches.Items.Clear()
+        quer.loadBranch()
     End Sub
 End Class

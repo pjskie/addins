@@ -31,7 +31,9 @@ Partial Class PT
         Me.DDFrom = New System.Windows.Forms.DateTimePicker()
         Me.DDTo = New System.Windows.Forms.DateTimePicker()
         Me.btnGenerateReport = New System.Windows.Forms.Button()
+        Me.clbBranches = New System.Windows.Forms.CheckedListBox()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -64,9 +66,10 @@ Partial Class PT
         '
         'GroupBox4
         '
-        Me.GroupBox4.Location = New System.Drawing.Point(6, 301)
+        Me.GroupBox4.Controls.Add(Me.clbBranches)
+        Me.GroupBox4.Location = New System.Drawing.Point(6, 168)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(402, 149)
+        Me.GroupBox4.Size = New System.Drawing.Size(402, 282)
         Me.GroupBox4.TabIndex = 17
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Select Branch:"
@@ -79,7 +82,7 @@ Partial Class PT
         Me.GroupBox2.Controls.Add(Me.DDTo)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 26)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(402, 269)
+        Me.GroupBox2.Size = New System.Drawing.Size(402, 136)
         Me.GroupBox2.TabIndex = 15
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Posting Date:"
@@ -87,7 +90,7 @@ Partial Class PT
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(79, 134)
+        Me.Label2.Location = New System.Drawing.Point(75, 81)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(63, 19)
         Me.Label2.TabIndex = 20
@@ -96,7 +99,7 @@ Partial Class PT
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(62, 102)
+        Me.Label1.Location = New System.Drawing.Point(58, 49)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(80, 19)
         Me.Label1.TabIndex = 19
@@ -108,7 +111,7 @@ Partial Class PT
         Me.DDFrom.CustomFormat = "MM/dd/yyyy"
         Me.DDFrom.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DDFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DDFrom.Location = New System.Drawing.Point(148, 97)
+        Me.DDFrom.Location = New System.Drawing.Point(144, 44)
         Me.DDFrom.Name = "DDFrom"
         Me.DDFrom.Size = New System.Drawing.Size(175, 26)
         Me.DDFrom.TabIndex = 5
@@ -119,7 +122,7 @@ Partial Class PT
         Me.DDTo.CustomFormat = "MM/dd/yyyy"
         Me.DDTo.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DDTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DDTo.Location = New System.Drawing.Point(148, 129)
+        Me.DDTo.Location = New System.Drawing.Point(144, 76)
         Me.DDTo.Name = "DDTo"
         Me.DDTo.Size = New System.Drawing.Size(175, 26)
         Me.DDTo.TabIndex = 6
@@ -135,6 +138,14 @@ Partial Class PT
         Me.btnGenerateReport.Text = "Generate Report"
         Me.btnGenerateReport.UseVisualStyleBackColor = True
         '
+        'clbBranches
+        '
+        Me.clbBranches.FormattingEnabled = True
+        Me.clbBranches.Location = New System.Drawing.Point(18, 26)
+        Me.clbBranches.Name = "clbBranches"
+        Me.clbBranches.Size = New System.Drawing.Size(370, 246)
+        Me.clbBranches.TabIndex = 0
+        '
         'PT
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -146,6 +157,7 @@ Partial Class PT
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Purchase Transactions"
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
@@ -161,4 +173,5 @@ Partial Class PT
     Friend WithEvents DDFrom As DateTimePicker
     Friend WithEvents DDTo As DateTimePicker
     Friend WithEvents btnGenerateReport As Button
+    Friend WithEvents clbBranches As CheckedListBox
 End Class
