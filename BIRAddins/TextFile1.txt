@@ -1,0 +1,54 @@
+﻿        Dim crParameterFieldDefinitions As ParameterFieldDefinitions
+        Dim crParameterFieldDefinition As ParameterFieldDefinition
+        Dim crParameterValues As New ParameterValues
+        Dim crParameterDiscreteValue As New ParameterDiscreteValue
+
+        crParameterDiscreteValue.Value = DDFrom.Text
+        crParameterFieldDefinitions =
+        cryRpt.DataDefinition.ParameterFields
+        crParameterFieldDefinition =
+        crParameterFieldDefinitions.Item("DateFrom")
+        crParameterValues = crParameterFieldDefinition.CurrentValues
+
+        crParameterValues.Clear()
+        crParameterValues.Add(crParameterDiscreteValue)
+        crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+
+        crParameterDiscreteValue.Value = DDFrom.Text
+        crParameterFieldDefinitions =
+        cryRpt.DataDefinition.ParameterFields
+        crParameterFieldDefinition =
+        crParameterFieldDefinitions.Item("DateTo")
+        crParameterValues = crParameterFieldDefinition.CurrentValues
+
+        crParameterValues.Clear()
+        crParameterValues.Add(crParameterDiscreteValue)
+        crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+
+
+		===================================
+
+		        Dim crTables As Tables
+        Dim crTable As Table
+
+        cryRpt.Load("D:\Queries\Crystal Reports\BCD - Crystal Reports\Ready for BIR Accreditation\BIR ADDINS\Cash Receipts Journal.rpt")
+        cryRpt.SetDatabaseLogon("sa", "p@ssw0rd")
+        'With crConnectionInfo
+        '    .ServerName = "localhost"
+        '    .DatabaseName = "BUILDMORE_MAIN_DB"
+        '    .UserID = "sa"
+        '    .Password = "p@ssw0rd"
+        'End With
+
+        'crTables = cryRpt.Database.Tables
+        'For Each crTable In crTables
+        '    crTableLogoninfo = crTable.LogOnInfo
+        '    crTableLogoninfo.ConnectionInfo = crConnectionInfo
+        '    crTable.ApplyLogOnInfo(crTableLogoninfo)
+        'Next
+
+
+		REPORTS W STATIC FILTER: 
+		CREDIT MEMO;
+		INVENTORY BOOKS;
+		CASHRECEIPTJOURNAL
