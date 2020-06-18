@@ -160,3 +160,7 @@ D:\git\birAddins\BIRAddins\obj\x86\Debug\BIRAddins.exe
 D:\git\birAddins\BIRAddins\obj\x86\Debug\BIRAddins.xml
 D:\git\birAddins\BIRAddins\obj\x86\Debug\BIRAddins.pdb
 D:\git\birAddins\BIRAddins\obj\x86\Debug\BIRAddins.vbprojResolveAssemblyReference.cache
+C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\BIRAddins.exe.config
+C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.exe
+C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.xml
+C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.pdb
