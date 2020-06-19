@@ -7,18 +7,14 @@
     <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="BIRAddins.exe.manifest" size="19394">
+    <dependentAssembly dependencyType="install" codebase="BIRAddins.exe.manifest" size="20171">
       <assemblyIdentity name="BIRAddins.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-<<<<<<< HEAD
-        <dsig:DigestValue>n4hXxS9kqdxlmkKAP/kc7Tu5J0M=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>TQBb8kJWx5h+EqcTmYqeSO4AVkA=</dsig:DigestValue>
->>>>>>> ac4172e4778bdde25fb2ebc0aae453fd70b17b28
+        <dsig:DigestValue>od3hkb/Hp0o6jlzji+0Qzef/1BI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
