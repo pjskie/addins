@@ -10,7 +10,7 @@ Public Class frmCashReceiptJournal
 
     Dim FilterReport As New FilterReport
 
-    Dim cryRpt As New ReportDocument
+
     Private myConn As SqlConnection
     Private myCmd As SqlCommand
     Private myReader As SqlDataReader
@@ -58,6 +58,17 @@ Public Class frmCashReceiptJournal
 
     Private Sub btnGenerateReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerateReport.Click
 
+        Dim cryRpt As New ReportDocument
+
+        Dim Count As Integer = CheckedListBox1.CheckedItems.Count
+        Dim Branches(100) As String
+        Dim i As Integer = 0
+
+        For Each itemChecked In CheckedListBox1.CheckedItems
+            Branches(i) = itemChecked.ToString
+            i = i + 1
+        Next
+
         If CheckedListBox1.CheckedItems.Count > 0 Then
 
             Dim reportType As String = "Cash Receipts Journal"
@@ -66,24 +77,21 @@ Public Class frmCashReceiptJournal
             Dim DateType As String
             Dim DateFrom As Date
             Dim DateTo As Date
-            Dim Branch As String
 
             If RadioDocument.Checked = True Then
                 DateType = "D"
                 DateFrom = DDFrom.Text
                 DateTo = DDTo.Text
-                Branch = "KORONADAL BRANCH"
             Else
                 DateType = "P"
                 DateFrom = PDFrom.Text
                 DateTo = PDTo.Text
-                Branch = "KORONADAL BRANCH"
             End If
 
             cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
             cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
 
-            FilterReport.Filter(DateType, DateFrom, DateTo, Branch, reportType, cryRpt)
+            FilterReport.Filter(DateType, DateFrom, DateTo, reportType, cryRpt, Branches, i)
 
             CrystalReportViewer1.ReportSource = cryRpt
             CrystalReportViewer1.Refresh()
