@@ -16,9 +16,10 @@ Public Class FilterReport
     Public Sub Filter(ByVal DateType As String,
                       ByVal DateFrom As Date,
                       ByVal DateTo As Date,
-                      ByVal Branch As String,
                       ByVal reportType As String,
-                      ByVal CryRpt As ReportDocument)
+                      ByVal CryRpt As ReportDocument,
+                      ByVal Branches() As String,
+                      ByVal Count As Integer)
 
         Dim crTableLogoninfos As New TableLogOnInfos
         Dim crTableLogoninfo As New TableLogOnInfo
@@ -64,17 +65,21 @@ Public Class FilterReport
         crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
 
         crParameterFieldDefinitions = CryRpt.DataDefinition.ParameterFields
-        crParameterFieldDefinition = crParameterFieldDefinitions("AccountName")
+        crParameterFieldDefinition = crParameterFieldDefinitions("Branch")
         crParameterValues = crParameterFieldDefinition.CurrentValues
 
-        Dim Count As Integer = frmGeneralLedger.CheckedListBox1.CheckedItems.Count
+        'Dim Count As Integer = frmGeneralLedger.CheckedListBox1.CheckedItems.Count
+
+        'For x As Integer = 0 To Branches.Count
+        '    MessageBox.Show(Branches(x))
+        'Next
 
         For i = 0 To Count - 1
             If i > 0 Then
                 crParameterDiscreteValue = Nothing
             End If
             crParameterDiscreteValue = New ParameterDiscreteValue()
-            'crParameterDiscreteValue.Value = form.CheckedListBox1.CheckedItems(i)
+            crParameterDiscreteValue.Value = Branches(i)
             crParameterValues.Add(crParameterDiscreteValue)
         Next
         crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)

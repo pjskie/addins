@@ -57,25 +57,23 @@ Public Class frmCreditMemoRegister
             Dim DateType As String
             Dim DateFrom As Date
             Dim DateTo As Date
-            Dim Branch As String
+            Dim Branch(100) As String
 
             If RadioDocument.Checked = True Then
                 DateType = "D"
                 DateFrom = DDFrom.Text
                 DateTo = DDTo.Text
-                Branch = "KORONADAL BRANCH"
             Else
                 DateType = "P"
                 DateFrom = PDFrom.Text
                 DateTo = PDTo.Text
-                Branch = "KORONADAL BRANCH"
             End If
 
             cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
             cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
 
 
-            FilterReport.Filter(DateType, DateFrom, DateTo, Branch, reportType, cryRpt)
+            'FilterReport.Filter(DateType, DateFrom, DateTo, reportType, cryRpt, Branch)
             'getFilterType()
             CrystalReportViewer1.ReportSource = cryRpt
             CrystalReportViewer1.Refresh()
