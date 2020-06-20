@@ -27,7 +27,7 @@ Public Class FilterReport
         ' Credit Memo Register
         ' Debit Memo Register
         ' Purchase Journal
-        ' Sales Journal
+        ' Sales Journalx
 
         Dim crTableLogoninfos As New TableLogOnInfos
         Dim crTableLogoninfo As New TableLogOnInfo
