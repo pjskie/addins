@@ -1,58 +1,3 @@
-<<<<<<< HEAD
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\BIRAddins.exe.config
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\BIRAddins.exe.manifest
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\BIRAddins.application
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\BIRAddins.exe
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\BIRAddins.pdb
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\BIRAddins.xml
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\AxShockwaveFlashObjects.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportSource.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.Shared.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.Windows.Forms.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\Microsoft.ReportViewer.Common.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\ShockwaveFlashObjects.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\stdole.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\bin\Debug\Microsoft.ReportViewer.WinForms.xml
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.vbprojResolveAssemblyReference.cache
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmCashDisbursmentJournal.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmCashReceiptJournal.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmCheckDisbursmentJournal.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmCheckwrite.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmCreditMemoRegister.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmDebitMemoRegsiter.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmGeneralLedger.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmInventoryBooks.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmLogin.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmMain.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmPurchaseJournal.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmSalesJournal.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmTreeView.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.Resources.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.PT.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.SAWT.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.SLS.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.ST.resources
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.vbproj.GenerateResource.Cache
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.exe.manifest
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.application
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.exe
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.xml
-C:\Users\HSDP SPU 2\Desktop\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.pdb
-=======
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\bin\Debug\BIRAddins.exe.config
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\bin\Debug\BIRAddins.exe.manifest
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\bin\Debug\BIRAddins.application
@@ -78,6 +23,7 @@ D:\Jose\PROJECTS\BIRADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\bin\Debug\stdole.dll
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+D:\Jose\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.vbprojResolveAssemblyReference.cache
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmCashDisbursmentJournal.resources
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmCashReceiptJournal.resources
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.frmCheckDisbursmentJournal.resources
@@ -102,9 +48,12 @@ D:\Jose\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.application
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.exe
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.xml
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.pdb
+<<<<<<< HEAD
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.vbprojResolveAssemblyReference.cache
 >>>>>>> ac4172e4778bdde25fb2ebc0aae453fd70b17b28
 E:\git\ADDINS\BIRAddins\bin\Debug\BIRAddins.exe.config
 E:\git\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.exe
 E:\git\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.xml
 E:\git\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.pdb
+=======
+>>>>>>> a6dbd6355517253690eecb7f9062e8ce43e5874e
