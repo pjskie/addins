@@ -68,12 +68,6 @@ Public Class FilterReport
         crParameterFieldDefinition = crParameterFieldDefinitions("Branch")
         crParameterValues = crParameterFieldDefinition.CurrentValues
 
-        'Dim Count As Integer = frmGeneralLedger.CheckedListBox1.CheckedItems.Count
-
-        'For x As Integer = 0 To Branches.Count
-        '    MessageBox.Show(Branches(x))
-        'Next
-
         For i = 0 To Count - 1
             If i > 0 Then
                 crParameterDiscreteValue = Nothing

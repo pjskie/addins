@@ -25,13 +25,13 @@ Partial Class PT
         Me.cr = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.clbBranches = New System.Windows.Forms.CheckedListBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DDFrom = New System.Windows.Forms.DateTimePicker()
         Me.DDTo = New System.Windows.Forms.DateTimePicker()
         Me.btnGenerateReport = New System.Windows.Forms.Button()
-        Me.clbBranches = New System.Windows.Forms.CheckedListBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -45,21 +45,21 @@ Partial Class PT
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.cr.Cursor = System.Windows.Forms.Cursors.Default
-        Me.cr.Location = New System.Drawing.Point(432, 11)
+        Me.cr.Location = New System.Drawing.Point(12, 210)
         Me.cr.Name = "cr"
-        Me.cr.Size = New System.Drawing.Size(970, 614)
+        Me.cr.Size = New System.Drawing.Size(1390, 414)
         Me.cr.TabIndex = 20
         Me.cr.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.GroupBox4)
-        Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Controls.Add(Me.btnGenerateReport)
+        Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 11)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(414, 614)
+        Me.GroupBox1.Size = New System.Drawing.Size(1390, 193)
         Me.GroupBox1.TabIndex = 19
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Search: Purhcase Transactions"
@@ -67,12 +67,20 @@ Partial Class PT
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.clbBranches)
-        Me.GroupBox4.Location = New System.Drawing.Point(6, 168)
+        Me.GroupBox4.Location = New System.Drawing.Point(473, 26)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(402, 282)
+        Me.GroupBox4.Size = New System.Drawing.Size(503, 155)
         Me.GroupBox4.TabIndex = 17
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Select Branch:"
+        '
+        'clbBranches
+        '
+        Me.clbBranches.FormattingEnabled = True
+        Me.clbBranches.Location = New System.Drawing.Point(6, 26)
+        Me.clbBranches.Name = "clbBranches"
+        Me.clbBranches.Size = New System.Drawing.Size(491, 114)
+        Me.clbBranches.TabIndex = 0
         '
         'GroupBox2
         '
@@ -82,7 +90,7 @@ Partial Class PT
         Me.GroupBox2.Controls.Add(Me.DDTo)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 26)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(402, 136)
+        Me.GroupBox2.Size = New System.Drawing.Size(460, 155)
         Me.GroupBox2.TabIndex = 15
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Posting Date:"
@@ -131,20 +139,12 @@ Partial Class PT
         '
         Me.btnGenerateReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnGenerateReport.Font = New System.Drawing.Font("Calibri", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle))
-        Me.btnGenerateReport.Location = New System.Drawing.Point(6, 456)
+        Me.btnGenerateReport.Location = New System.Drawing.Point(982, 26)
         Me.btnGenerateReport.Name = "btnGenerateReport"
         Me.btnGenerateReport.Size = New System.Drawing.Size(402, 152)
         Me.btnGenerateReport.TabIndex = 12
         Me.btnGenerateReport.Text = "Generate Report"
         Me.btnGenerateReport.UseVisualStyleBackColor = True
-        '
-        'clbBranches
-        '
-        Me.clbBranches.FormattingEnabled = True
-        Me.clbBranches.Location = New System.Drawing.Point(18, 26)
-        Me.clbBranches.Name = "clbBranches"
-        Me.clbBranches.Size = New System.Drawing.Size(370, 246)
-        Me.clbBranches.TabIndex = 0
         '
         'PT
         '

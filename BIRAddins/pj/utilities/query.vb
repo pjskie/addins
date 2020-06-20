@@ -7,20 +7,20 @@ Imports System.Drawing.Image
 Public Class query
     Public SQL As New conn
 
-    Public Sub loadBranch()
-
-
+    Public Sub loadBranch(cbl As CheckedListBox)
         'Query for the branches
-        SQL.ExecQueryDT("SELECT * FROM OBPL WHERE BPLId NOT IN (1,2);")
+        SQL.ExecQueryDT("SELECT * from OBPL 
+                        WHERE MAINBPL = 'N' AND DISABLED = 'N'
+                        ORDER BY BPLID ASC;")
 
         ''REPORT & ABORT SUB ON ERRORS
         If SQL.HasException(True) Then Exit Sub
 
-        PT.clbBranches.DisplayMember = "BPLName"
-        PT.clbBranches.ValueMember = "BPLName"
+        cbl.DisplayMember = "BPLName"
+        cbl.ValueMember = "BPLid"
 
         For Each r As DataRow In SQL.DBDT.Rows
-            PT.clbBranches.Items.Add(r(1))
+            cbl.Items.Add(r.Item("BPLName"))
         Next
 
     End Sub
