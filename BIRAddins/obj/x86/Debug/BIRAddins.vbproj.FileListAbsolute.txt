@@ -104,3 +104,7 @@ D:\Jose\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.xml
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.pdb
 D:\Jose\PROJECTS\BIRADDINS\BIRAddins\obj\x86\Debug\BIRAddins.vbprojResolveAssemblyReference.cache
 >>>>>>> ac4172e4778bdde25fb2ebc0aae453fd70b17b28
+E:\git\ADDINS\BIRAddins\bin\Debug\BIRAddins.exe.config
+E:\git\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.exe
+E:\git\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.xml
+E:\git\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.pdb
