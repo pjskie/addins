@@ -23,39 +23,61 @@ Partial Class SAWT
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnGenerateReport = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.clbBranches = New System.Windows.Forms.CheckedListBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cbxQuarter = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cbxYear = New System.Windows.Forms.ComboBox()
-        Me.btnGenerateReport = New System.Windows.Forms.Button()
         Me.cr = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btnGenerateReport)
         Me.GroupBox1.Controls.Add(Me.GroupBox4)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
-        Me.GroupBox1.Controls.Add(Me.btnGenerateReport)
         Me.GroupBox1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(414, 614)
+        Me.GroupBox1.Size = New System.Drawing.Size(1390, 185)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Search: Quarterly Summary ALphalist of Wittholding Taxed"
         '
+        'btnGenerateReport
+        '
+        Me.btnGenerateReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnGenerateReport.Font = New System.Drawing.Font("Calibri", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle))
+        Me.btnGenerateReport.Location = New System.Drawing.Point(982, 27)
+        Me.btnGenerateReport.Name = "btnGenerateReport"
+        Me.btnGenerateReport.Size = New System.Drawing.Size(402, 152)
+        Me.btnGenerateReport.TabIndex = 12
+        Me.btnGenerateReport.Text = "Generate Report"
+        Me.btnGenerateReport.UseVisualStyleBackColor = True
+        '
         'GroupBox4
         '
-        Me.GroupBox4.Location = New System.Drawing.Point(6, 301)
+        Me.GroupBox4.Controls.Add(Me.clbBranches)
+        Me.GroupBox4.Location = New System.Drawing.Point(417, 26)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(402, 149)
+        Me.GroupBox4.Size = New System.Drawing.Size(559, 149)
         Me.GroupBox4.TabIndex = 16
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Select Branch:"
+        '
+        'clbBranches
+        '
+        Me.clbBranches.FormattingEnabled = True
+        Me.clbBranches.Location = New System.Drawing.Point(7, 27)
+        Me.clbBranches.Name = "clbBranches"
+        Me.clbBranches.Size = New System.Drawing.Size(546, 114)
+        Me.clbBranches.TabIndex = 0
         '
         'GroupBox2
         '
@@ -65,7 +87,7 @@ Partial Class SAWT
         Me.GroupBox2.Controls.Add(Me.cbxYear)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 26)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(402, 269)
+        Me.GroupBox2.Size = New System.Drawing.Size(405, 149)
         Me.GroupBox2.TabIndex = 14
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Year and Quarter:"
@@ -73,7 +95,7 @@ Partial Class SAWT
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(52, 150)
+        Me.Label2.Location = New System.Drawing.Point(42, 83)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(106, 19)
         Me.Label2.TabIndex = 16
@@ -84,7 +106,7 @@ Partial Class SAWT
         Me.cbxQuarter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbxQuarter.FormattingEnabled = True
         Me.cbxQuarter.Items.AddRange(New Object() {"1", "2", "3", "4"})
-        Me.cbxQuarter.Location = New System.Drawing.Point(164, 147)
+        Me.cbxQuarter.Location = New System.Drawing.Point(154, 80)
         Me.cbxQuarter.Name = "cbxQuarter"
         Me.cbxQuarter.Size = New System.Drawing.Size(168, 27)
         Me.cbxQuarter.TabIndex = 15
@@ -92,7 +114,7 @@ Partial Class SAWT
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(74, 83)
+        Me.Label1.Location = New System.Drawing.Point(64, 40)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(84, 19)
         Me.Label1.TabIndex = 14
@@ -102,21 +124,10 @@ Partial Class SAWT
         '
         Me.cbxYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbxYear.FormattingEnabled = True
-        Me.cbxYear.Location = New System.Drawing.Point(164, 80)
+        Me.cbxYear.Location = New System.Drawing.Point(154, 37)
         Me.cbxYear.Name = "cbxYear"
         Me.cbxYear.Size = New System.Drawing.Size(168, 27)
         Me.cbxYear.TabIndex = 13
-        '
-        'btnGenerateReport
-        '
-        Me.btnGenerateReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnGenerateReport.Font = New System.Drawing.Font("Calibri", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle))
-        Me.btnGenerateReport.Location = New System.Drawing.Point(6, 456)
-        Me.btnGenerateReport.Name = "btnGenerateReport"
-        Me.btnGenerateReport.Size = New System.Drawing.Size(402, 152)
-        Me.btnGenerateReport.TabIndex = 12
-        Me.btnGenerateReport.Text = "Generate Report"
-        Me.btnGenerateReport.UseVisualStyleBackColor = True
         '
         'cr
         '
@@ -126,13 +137,13 @@ Partial Class SAWT
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.cr.Cursor = System.Windows.Forms.Cursors.Default
-        Me.cr.Location = New System.Drawing.Point(442, 12)
+        Me.cr.Location = New System.Drawing.Point(12, 203)
         Me.cr.Name = "cr"
         Me.cr.ShowCloseButton = False
         Me.cr.ShowGroupTreeButton = False
         Me.cr.ShowParameterPanelButton = False
         Me.cr.ShowRefreshButton = False
-        Me.cr.Size = New System.Drawing.Size(960, 612)
+        Me.cr.Size = New System.Drawing.Size(1390, 421)
         Me.cr.TabIndex = 15
         Me.cr.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
@@ -147,6 +158,7 @@ Partial Class SAWT
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "BOA - Summary Alphalist of Withholding Taxes"
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
@@ -162,4 +174,5 @@ Partial Class SAWT
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents Label2 As Label
     Friend WithEvents cbxQuarter As ComboBox
+    Friend WithEvents clbBranches As CheckedListBox
 End Class

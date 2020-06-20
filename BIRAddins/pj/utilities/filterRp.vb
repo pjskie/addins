@@ -12,10 +12,11 @@ Public Class filterRp
     Private myReader As SqlDataReader
     Private results As String
 
-    Public Sub generateSAWT(ByVal y As Date,
+    Public Sub generateQuarterlyRep(ByVal y As Date,
                               ByVal q As String,
-                              ByVal b As String,
-                              ByVal CryRpt As ReportDocument)
+                              ByVal b() As String,
+                              ByVal CryRpt As ReportDocument,
+                              ByVal Count As Integer)
 
 
         Dim crParameterFieldDefinitions As ParameterFieldDefinitions
@@ -32,13 +33,18 @@ Public Class filterRp
         crParameterValues.Add(crParameterDiscreteValue)
         crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
 
-        crParameterDiscreteValue.Value = b
         crParameterFieldDefinitions = CryRpt.DataDefinition.ParameterFields
-        crParameterFieldDefinition = crParameterFieldDefinitions.Item("brnch")
+        crParameterFieldDefinition = crParameterFieldDefinitions("brnch")
         crParameterValues = crParameterFieldDefinition.CurrentValues
 
-        crParameterValues.Clear()
-        crParameterValues.Add(crParameterDiscreteValue)
+        For i = 0 To Count - 1
+            If i > 0 Then
+                crParameterDiscreteValue = Nothing
+            End If
+            crParameterDiscreteValue = New ParameterDiscreteValue()
+            crParameterDiscreteValue.Value = b(i)
+            crParameterValues.Add(crParameterDiscreteValue)
+        Next
         crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
 
         crParameterDiscreteValue.Value = q
@@ -51,10 +57,11 @@ Public Class filterRp
         crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
     End Sub
 
-    Public Sub generateSalesTrans(ByVal str As Date,
+    Public Sub generateTransactionsRep(ByVal str As Date,
                               ByVal stp As Date,
-                              ByVal b As String,
-                              ByVal CryRpt As ReportDocument)
+                              ByVal b() As String,
+                              ByVal CryRpt As ReportDocument,
+                              ByVal Count As Integer)
         Dim crParameterFieldDefinitions As ParameterFieldDefinitions
         Dim crParameterFieldDefinition As ParameterFieldDefinition
         Dim crParameterValues As New ParameterValues
@@ -78,14 +85,20 @@ Public Class filterRp
         crParameterValues.Add(crParameterDiscreteValue)
         crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
 
-        crParameterDiscreteValue.Value = b
         crParameterFieldDefinitions = CryRpt.DataDefinition.ParameterFields
-        crParameterFieldDefinition = crParameterFieldDefinitions.Item("brnch")
+        crParameterFieldDefinition = crParameterFieldDefinitions("brnch")
         crParameterValues = crParameterFieldDefinition.CurrentValues
 
-        crParameterValues.Clear()
-        crParameterValues.Add(crParameterDiscreteValue)
+        For i = 0 To Count - 1
+            If i > 0 Then
+                crParameterDiscreteValue = Nothing
+            End If
+            crParameterDiscreteValue = New ParameterDiscreteValue()
+            crParameterDiscreteValue.Value = b(i)
+            crParameterValues.Add(crParameterDiscreteValue)
+        Next
         crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+
     End Sub
 
 End Class

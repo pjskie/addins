@@ -8,12 +8,11 @@ Imports CrystalDecisions.Shared
 
 Public Class ST
     Private q As New filterRp
-    Dim cryRpt As New ReportDocument
     Private myConn As SqlConnection
     Private myCmd As SqlCommand
     Private myReader As SqlDataReader
     Private results As String
-
+    Private quer As New query
 
     ' Posting Date Paremeter Validations
     Private Sub DDFrom_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DDFrom.ValueChanged
@@ -29,19 +28,40 @@ Public Class ST
     End Sub
 
     Private Sub btnGenerateReport_Click(sender As Object, e As EventArgs) Handles btnGenerateReport.Click
-        Dim reportType As String = "ST"
-        Dim DateFrom As Date = DDFrom.Value
-        Dim DateTo As Date = DDTo.Value
-        Dim brnch As String = ""
-        cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
-        cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
+        Dim cryRpt As New ReportDocument
 
-        Dim crTableLogoninfos As New TableLogOnInfos
-        Dim crTableLogoninfo As New TableLogOnInfo
-        Dim crConnectionInfo As New ConnectionInfo
+        'Dim Count As Integer = clbBranches.CheckedItems.Count
+        Dim brnch(100) As String
+        Dim i As Integer = 0
 
-        q.generateSalesTrans(DateFrom, DateTo, brnch, cryRpt)
-        cr.ReportSource = cryRpt
-        cr.Refresh()
+        For Each itemChecked In clbBranches.CheckedItems
+            brnch(i) = itemChecked.ToString
+            i = i + 1
+        Next
+
+        If clbBranches.CheckedItems.Count > 0 Then
+
+            Dim reportType As String = "ST"
+            Dim DateFrom As Date = DDFrom.Value
+            Dim DateTo As Date = DDTo.Value
+            cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
+            cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
+
+            Dim crTableLogoninfos As New TableLogOnInfos
+            Dim crTableLogoninfo As New TableLogOnInfo
+            Dim crConnectionInfo As New ConnectionInfo
+
+            q.generateTransactionsRep(DateFrom, DateTo, brnch, cryRpt, i)
+            cr.ReportSource = cryRpt
+            cr.Refresh()
+        Else
+            MsgBox("Please select Branch", vbCritical, "Info")
+        End If
+    End Sub
+
+    Private Sub ST_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Clear list box
+        clbBranches.Items.Clear()
+        quer.loadBranch(clbBranches)
     End Sub
 End Class

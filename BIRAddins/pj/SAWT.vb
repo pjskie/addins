@@ -9,51 +9,68 @@ Imports System.ComponentModel
 
 Public Class SAWT
 
-    Dim FilterReport As New filterRp
-    Dim cryRpt As New ReportDocument
+    Private q As New filterRp
     Private myConn As SqlConnection
     Private myCmd As SqlCommand
     Private myReader As SqlDataReader
     Private results As String
+    Private quer As New query
 
     Private Sub btnGenerateReport_Click(sender As Object, e As EventArgs) Handles btnGenerateReport.Click
+        Dim cryRpt As New ReportDocument
+
+        'Dim Count As Integer = clbBranches.CheckedItems.Count
+        Dim brnch(100) As String
+        Dim i As Integer = 0
+
+        For Each itemChecked In clbBranches.CheckedItems
+            brnch(i) = itemChecked.ToString
+            i = i + 1
+        Next
+
         If cbxYear.SelectedIndex = -1 And cbxQuarter.SelectedIndex = -1 Then
-            MsgBox("Select Valid Data!")
+            MsgBox("Please select Year/Quarter", vbCritical, "Info")
             cbxYear.Select()
+            Exit Sub
         Else
             If cbxYear.SelectedIndex = -1 Then
-                MsgBox("Select Valid Data!")
+                MsgBox("Please select Year", vbCritical, "Info")
                 cbxYear.Select()
             ElseIf cbxQuarter.SelectedIndex = -1 Then
-                MsgBox("Select Valid Data!")
+                MsgBox("Please select Quarter", vbCritical, "Info")
                 cbxQuarter.Select()
             Else
+                If clbBranches.CheckedItems.Count > 0 Then
+                    Dim reportType As String = "QSAWT"
+                    Dim year As Date = cbxYear.SelectedItem.ToString() + "-01-01".ToString()
+                    Dim qtr As String = cbxQuarter.SelectedItem.ToString()
+                    cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
+                    cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
 
-                Dim reportType As String = "QSAWT"
-                Dim year As Date = cbxYear.SelectedItem.ToString() + "-01-01".ToString()
-                Dim qtr As String = cbxQuarter.SelectedItem.ToString()
-                Dim brnch As String = "KOR"
+                    Dim crTableLogoninfos As New TableLogOnInfos
+                    Dim crTableLogoninfo As New TableLogOnInfo
+                    Dim crConnectionInfo As New ConnectionInfo
 
-                cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
-                cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
-
-                Dim crTableLogoninfos As New TableLogOnInfos
-                Dim crTableLogoninfo As New TableLogOnInfo
-                Dim crConnectionInfo As New ConnectionInfo
-
-                FilterReport.generateSAWT(year, qtr, brnch, cryRpt)
-                cr.ReportSource = cryRpt
-                cr.Refresh()
+                    q.generateQuarterlyRep(year, qtr, brnch, cryRpt, i)
+                    cr.ReportSource = cryRpt
+                    cr.Refresh()
+                Else
+                    MsgBox("Please select Branch", vbCritical, "Info")
+                    cbxQuarter.Select()
+                End If
             End If
         End If
     End Sub
 
     Private Sub SAWT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Clear list box
+        clbBranches.Items.Clear()
+        quer.loadBranch(clbBranches)
+
         cbxYear.Text = Date.Now.Year
         For i As Integer = 0 To 9
             cbxYear.Items.Add(Date.Now.Year - i)
         Next
         cbxYear.SelectedIndex = -1
     End Sub
-
 End Class
