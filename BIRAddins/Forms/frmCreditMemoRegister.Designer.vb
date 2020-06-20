@@ -75,7 +75,6 @@ Partial Class frmCreditMemoRegister
         Me.CheckedListBox1.CheckOnClick = True
         Me.CheckedListBox1.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Items.AddRange(New Object() {"KORONADAL BRANCH", "GENSAN BRANCH", "POLOMOLOK BRANCH"})
         Me.CheckedListBox1.Location = New System.Drawing.Point(460, 36)
         Me.CheckedListBox1.Name = "CheckedListBox1"
         Me.CheckedListBox1.Size = New System.Drawing.Size(280, 67)

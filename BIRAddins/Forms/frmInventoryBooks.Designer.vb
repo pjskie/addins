@@ -32,6 +32,8 @@ Partial Class frmInventoryBooks
         Me.DDFrom = New System.Windows.Forms.DateTimePicker()
         Me.DDTo = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Audit = New System.Windows.Forms.RadioButton()
+        Me.Posting = New System.Windows.Forms.RadioButton()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -43,13 +45,13 @@ Partial Class frmInventoryBooks
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer1.Location = New System.Drawing.Point(12, 132)
+        Me.CrystalReportViewer1.Location = New System.Drawing.Point(401, 12)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
         Me.CrystalReportViewer1.ShowCloseButton = False
         Me.CrystalReportViewer1.ShowGroupTreeButton = False
         Me.CrystalReportViewer1.ShowParameterPanelButton = False
         Me.CrystalReportViewer1.ShowRefreshButton = False
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(950, 248)
+        Me.CrystalReportViewer1.Size = New System.Drawing.Size(870, 656)
         Me.CrystalReportViewer1.TabIndex = 23
         Me.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
@@ -57,15 +59,17 @@ Partial Class frmInventoryBooks
         '
         Me.btnGenerateReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnGenerateReport.Font = New System.Drawing.Font("Calibri", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGenerateReport.Location = New System.Drawing.Point(746, 36)
+        Me.btnGenerateReport.Location = New System.Drawing.Point(9, 583)
         Me.btnGenerateReport.Name = "btnGenerateReport"
-        Me.btnGenerateReport.Size = New System.Drawing.Size(198, 67)
+        Me.btnGenerateReport.Size = New System.Drawing.Size(364, 67)
         Me.btnGenerateReport.TabIndex = 12
         Me.btnGenerateReport.Text = "Generate Report"
         Me.btnGenerateReport.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Posting)
+        Me.GroupBox1.Controls.Add(Me.Audit)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.CheckedListBox1)
         Me.GroupBox1.Controls.Add(Me.btnGenerateReport)
@@ -76,7 +80,7 @@ Partial Class frmInventoryBooks
         Me.GroupBox1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(950, 114)
+        Me.GroupBox1.Size = New System.Drawing.Size(383, 656)
         Me.GroupBox1.TabIndex = 22
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Search: Inventory Books"
@@ -93,13 +97,14 @@ Partial Class frmInventoryBooks
         '
         'CheckedListBox1
         '
+        Me.CheckedListBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckedListBox1.CheckOnClick = True
         Me.CheckedListBox1.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Items.AddRange(New Object() {"KORONADAL BRANCH", "GENSAN BRANCH", "POLOMOLOK BRANCH"})
-        Me.CheckedListBox1.Location = New System.Drawing.Point(460, 36)
+        Me.CheckedListBox1.Location = New System.Drawing.Point(9, 146)
         Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.Size = New System.Drawing.Size(280, 67)
+        Me.CheckedListBox1.Size = New System.Drawing.Size(364, 424)
         Me.CheckedListBox1.TabIndex = 10
         Me.CheckedListBox1.ThreeDCheckBoxes = True
         '
@@ -107,11 +112,11 @@ Partial Class frmInventoryBooks
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(400, 42)
+        Me.Label4.Location = New System.Drawing.Point(6, 124)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(54, 18)
+        Me.Label4.Size = New System.Drawing.Size(82, 18)
         Me.Label4.TabIndex = 11
-        Me.Label4.Text = "Branch:"
+        Me.Label4.Text = "Warehouse:"
         '
         'DDFrom
         '
@@ -145,11 +150,33 @@ Partial Class frmInventoryBooks
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "to"
         '
+        'Audit
+        '
+        Me.Audit.AutoSize = True
+        Me.Audit.Location = New System.Drawing.Point(9, 68)
+        Me.Audit.Name = "Audit"
+        Me.Audit.Size = New System.Drawing.Size(172, 23)
+        Me.Audit.TabIndex = 14
+        Me.Audit.TabStop = True
+        Me.Audit.Text = "Inventory Audit Report"
+        Me.Audit.UseVisualStyleBackColor = True
+        '
+        'Posting
+        '
+        Me.Posting.AutoSize = True
+        Me.Posting.Location = New System.Drawing.Point(9, 97)
+        Me.Posting.Name = "Posting"
+        Me.Posting.Size = New System.Drawing.Size(166, 23)
+        Me.Posting.TabIndex = 15
+        Me.Posting.TabStop = True
+        Me.Posting.Text = "Inventory Posting List"
+        Me.Posting.UseVisualStyleBackColor = True
+        '
         'frmInventoryBooks
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(974, 392)
+        Me.ClientSize = New System.Drawing.Size(1283, 680)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -171,4 +198,6 @@ Partial Class frmInventoryBooks
     Friend WithEvents DDTo As DateTimePicker
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents Posting As RadioButton
+    Friend WithEvents Audit As RadioButton
 End Class
