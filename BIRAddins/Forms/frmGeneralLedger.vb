@@ -73,7 +73,7 @@ Public Class frmGeneralLedger
         CheckedListBox1.Items.Clear()
         'And where CurrTotal > 0
         connection.Open()
-        Dim command As New SqlCommand("SELECT AcctName from OACT WHERE ACCTNAME LIKE '%" + txtSearch.Text + "%' And where CurrTotal > 0 ORDER BY GROUPMASK, GRPLINE ASC", connection)
+        Dim command As New SqlCommand("SELECT AcctName from OACT WHERE ACCTNAME LIKE '%" + txtSearch.Text + "%' And CurrTotal > 0 ORDER BY GROUPMASK, GRPLINE ASC", connection)
         Dim reader As SqlDataReader = command.ExecuteReader()
         Dim dt As New DataTable()
         dt.Load(reader)

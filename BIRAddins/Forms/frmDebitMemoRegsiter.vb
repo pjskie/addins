@@ -68,8 +68,7 @@ Public Class frmDebitMemoRegsiter
             i = i + 1
         Next
 
-        If CheckedListBox1.CheckedItems.Count > 0 Then
-            Dim reportType As String = "Debit Memo Register"
+        Dim reportType As String = "Debit Memo Register"
 
             Dim DateType As String
             Dim DateFrom As Date
@@ -93,9 +92,6 @@ Public Class frmDebitMemoRegsiter
             FilterReport.Filter(DateType, DateFrom, DateTo, reportType, cryRpt, Branches, i)
             CrystalReportViewer1.ReportSource = cryRpt
             CrystalReportViewer1.Refresh()
-        Else
-            MessageBox.Show("Please Select Branch")
-        End If
 
     End Sub
 
