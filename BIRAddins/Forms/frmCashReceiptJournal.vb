@@ -10,7 +10,6 @@ Public Class frmCashReceiptJournal
 
     Dim FilterReport As New FilterReport
 
-
     Private myConn As SqlConnection
     Private myCmd As SqlCommand
     Private myReader As SqlDataReader

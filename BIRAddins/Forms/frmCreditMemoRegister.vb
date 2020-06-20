@@ -9,11 +9,13 @@ Public Class frmCreditMemoRegister
 
     Dim FilterReport As New FilterReport
 
-    Dim cryRpt As New ReportDocument
     Private myConn As SqlConnection
     Private myCmd As SqlCommand
     Private myReader As SqlDataReader
     Private results As String
+
+    Dim connectionString As String = "Server=172.16.50.5;Database=BUILDMORE_MAIN_DB;User Id=sa;Password=Bu1ldm0r3.SBO"
+    Dim connection As New SqlConnection(connectionString)
 
     Private Sub RadioPosting_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioDocument.CheckedChanged
         PDFrom.Enabled = False
@@ -51,6 +53,17 @@ Public Class frmCreditMemoRegister
 
     Private Sub btnGenerateReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerateReport.Click
 
+        Dim cryRpt As New ReportDocument
+
+        Dim Count As Integer = CheckedListBox1.CheckedItems.Count
+        Dim Branches(100) As String
+        Dim i As Integer = 0
+
+        For Each itemChecked In CheckedListBox1.CheckedItems
+            Branches(i) = itemChecked.ToString
+            i = i + 1
+        Next
+
         If CheckedListBox1.CheckedItems.Count > 0 Then
             Dim reportType As String = "Credit Memo Register"
 
@@ -73,8 +86,7 @@ Public Class frmCreditMemoRegister
             cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
 
 
-            'FilterReport.Filter(DateType, DateFrom, DateTo, reportType, cryRpt, Branch)
-            'getFilterType()
+            FilterReport.Filter(DateType, DateFrom, DateTo, reportType, cryRpt, Branches, i)
             CrystalReportViewer1.ReportSource = cryRpt
             CrystalReportViewer1.Refresh()
         Else
@@ -83,4 +95,20 @@ Public Class frmCreditMemoRegister
 
     End Sub
 
+    Private Sub frmCreditMemoRegister_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        connection.Open()
+        Dim command As New SqlCommand("SELECT BPLNAME from OBPL 
+        WHERE MAINBPL = 'N' AND DISABLED = 'N'
+        ORDER BY BPLID ASC", connection)
+        Dim reader As SqlDataReader = command.ExecuteReader()
+        Dim dt As New DataTable()
+        dt.Load(reader)
+        Dim index As Integer = 1
+        For Each dRow As DataRow In dt.Rows
+
+            CheckedListBox1.Items.Add(dRow.Item("BPLName"))
+
+        Next
+        connection.Close()
+    End Sub
 End Class

@@ -21,6 +21,14 @@ Public Class FilterReport
                       ByVal Branches() As String,
                       ByVal Count As Integer)
 
+        ' Cash Receipts Journal
+        ' Check Disbursment Journal
+        ' Cash Disbursment Journal
+        ' Credit Memo Register
+        ' Debit Memo Register
+        ' Purchase Journal
+        ' Sales Journal
+
         Dim crTableLogoninfos As New TableLogOnInfos
         Dim crTableLogoninfo As New TableLogOnInfo
         Dim crConnectionInfo As New ConnectionInfo
@@ -68,12 +76,6 @@ Public Class FilterReport
         crParameterFieldDefinition = crParameterFieldDefinitions("Branch")
         crParameterValues = crParameterFieldDefinition.CurrentValues
 
-        'Dim Count As Integer = frmGeneralLedger.CheckedListBox1.CheckedItems.Count
-
-        'For x As Integer = 0 To Branches.Count
-        '    MessageBox.Show(Branches(x))
-        'Next
-
         For i = 0 To Count - 1
             If i > 0 Then
                 crParameterDiscreteValue = Nothing
@@ -89,7 +91,8 @@ Public Class FilterReport
 
     Public Sub InventoryBooks(ByVal DateFrom As Date,
                               ByVal DateTo As Date,
-                              ByVal CryRpt As ReportDocument)
+                              ByVal CryRpt As ReportDocument,
+                              ByVal Branches() As String)
 
         Dim crTableLogoninfos As New TableLogOnInfos
         Dim crTableLogoninfo As New TableLogOnInfo
@@ -120,6 +123,23 @@ Public Class FilterReport
 
         crParameterValues.Clear()
         crParameterValues.Add(crParameterDiscreteValue)
+        crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+
+        crParameterFieldDefinitions = CryRpt.DataDefinition.ParameterFields
+        crParameterFieldDefinition = crParameterFieldDefinitions("Warehouse")
+        crParameterValues = crParameterFieldDefinition.CurrentValues
+
+        Dim Count As Integer = frmInventoryBooks.CheckedListBox1.CheckedItems.Count
+
+        For i = 0 To Count - 1
+            If i > 0 Then
+                crParameterDiscreteValue = Nothing
+            End If
+            crParameterDiscreteValue = New ParameterDiscreteValue()
+            MessageBox.Show(Branches(i))
+            crParameterDiscreteValue.Value = Branches(i)
+            crParameterValues.Add(crParameterDiscreteValue)
+        Next
         crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
 
     End Sub

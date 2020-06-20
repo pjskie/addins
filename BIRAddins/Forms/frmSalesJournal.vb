@@ -8,11 +8,15 @@ Imports CrystalDecisions.Shared
 
 Public Class frmSalesJournal
 
-    Dim cryRpt As New ReportDocument
+    Dim FilterReport As New FilterReport
+
     Private myConn As SqlConnection
     Private myCmd As SqlCommand
     Private myReader As SqlDataReader
     Private results As String
+
+    Dim connectionString As String = "Server=172.16.50.5;Database=BUILDMORE_MAIN_DB;User Id=sa;Password=Bu1ldm0r3.SBO"
+    Dim connection As New SqlConnection(connectionString)
 
     Private Sub RadioPosting_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioDocument.CheckedChanged
         PDFrom.Enabled = False
@@ -50,149 +54,56 @@ Public Class frmSalesJournal
 
     Private Sub btnGenerateReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerateReport.Click
 
-        If CheckedListBox1.CheckedItems.Count > 0 Then
-            Dim crTableLogoninfos As New TableLogOnInfos
-            Dim crTableLogoninfo As New TableLogOnInfo
-            Dim crConnectionInfo As New ConnectionInfo
+        Dim cryRpt As New ReportDocument
 
-            cryRpt.Load(My.Application.Info.DirectoryPath + "\Sales Journal.rpt")
-            cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
-            getFilterType()
+        Dim Count As Integer = CheckedListBox1.CheckedItems.Count
+        Dim Branches(100) As String
+        Dim i As Integer = 0
 
-            CrystalReportViewer1.ReportSource = cryRpt
-            CrystalReportViewer1.Refresh()
-        Else
-            MessageBox.Show("Please Select Branch")
-        End If
+        For Each itemChecked In CheckedListBox1.CheckedItems
+            Branches(i) = itemChecked.ToString
+            i = i + 1
+        Next
 
-    End Sub
 
-    Private Sub getFilterType()
+        Dim reportType As String = "Sales Journal"
+        Dim form As Form = Me
+
+        Dim DateType As String
+        Dim DateFrom As Date
+        Dim DateTo As Date
 
         If RadioDocument.Checked = True Then
-            Dim DateType As String = "D"
-
-            Dim crParameterFieldDefinitions As ParameterFieldDefinitions
-            Dim crParameterFieldDefinition As ParameterFieldDefinition
-            Dim crParameterValues As New ParameterValues
-            Dim crParameterDiscreteValue As New ParameterDiscreteValue
-
-            crParameterDiscreteValue.Value = DateType
-            crParameterFieldDefinitions =
-            cryRpt.DataDefinition.ParameterFields
-            crParameterFieldDefinition =
-            crParameterFieldDefinitions.Item("DateType")
-            crParameterValues = crParameterFieldDefinition.CurrentValues
-
-            crParameterValues.Clear()
-            crParameterValues.Add(crParameterDiscreteValue)
-            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
-
-            crParameterDiscreteValue.Value = DDFrom.Text
-            crParameterFieldDefinitions =
-            cryRpt.DataDefinition.ParameterFields
-            crParameterFieldDefinition =
-            crParameterFieldDefinitions.Item("DateFrom")
-            crParameterValues = crParameterFieldDefinition.CurrentValues
-
-            crParameterValues.Clear()
-            crParameterValues.Add(crParameterDiscreteValue)
-            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
-
-            crParameterDiscreteValue.Value = DDTo.Text
-            crParameterFieldDefinitions =
-            cryRpt.DataDefinition.ParameterFields
-            crParameterFieldDefinition =
-            crParameterFieldDefinitions.Item("DateTo")
-            crParameterValues = crParameterFieldDefinition.CurrentValues
-
-            crParameterValues.Clear()
-            crParameterValues.Add(crParameterDiscreteValue)
-            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
-
-            Dim Count As Integer = CheckedListBox1.SelectedItems.Count
-            Dim Count2 As Integer = CheckedListBox1.Items.Count
-            If CheckedListBox1.CheckedItems.Count > 0 Then
-
-                crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields
-                crParameterFieldDefinition = crParameterFieldDefinitions.Item("Branch")
-                For i = 0 To Count - 1
-                    If i > 0 Then
-                        crParameterDiscreteValue = Nothing
-                    End If
-                    crParameterDiscreteValue = New ParameterDiscreteValue
-                    crParameterDiscreteValue.Value = CheckedListBox1.CheckedItems(i)
-                    crParameterValues.Add(crParameterDiscreteValue)
-                Next
-
-                crParameterValues.Clear()
-                crParameterValues.Add(crParameterDiscreteValue)
-                crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
-            Else
-            End If
-
+            DateType = "D"
+            DateFrom = DDFrom.Text
+            DateTo = DDTo.Text
         Else
-            Dim DateType As String = "P"
-
-            Dim crParameterFieldDefinitions As ParameterFieldDefinitions
-            Dim crParameterFieldDefinition As ParameterFieldDefinition
-            Dim crParameterValues As New ParameterValues
-            Dim crParameterDiscreteValue As New ParameterDiscreteValue
-
-            crParameterDiscreteValue.Value = DateType
-            crParameterFieldDefinitions =
-            cryRpt.DataDefinition.ParameterFields
-            crParameterFieldDefinition =
-            crParameterFieldDefinitions.Item("DateType")
-            crParameterValues = crParameterFieldDefinition.CurrentValues
-
-            crParameterValues.Clear()
-            crParameterValues.Add(crParameterDiscreteValue)
-            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
-
-            crParameterDiscreteValue.Value = PDFrom.Text
-            crParameterFieldDefinitions =
-            cryRpt.DataDefinition.ParameterFields
-            crParameterFieldDefinition =
-            crParameterFieldDefinitions.Item("DateFrom")
-            crParameterValues = crParameterFieldDefinition.CurrentValues
-
-            crParameterValues.Clear()
-            crParameterValues.Add(crParameterDiscreteValue)
-            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
-
-            crParameterDiscreteValue.Value = PDTo.Text
-            crParameterFieldDefinitions =
-            cryRpt.DataDefinition.ParameterFields
-            crParameterFieldDefinition =
-            crParameterFieldDefinitions.Item("DateTo")
-            crParameterValues = crParameterFieldDefinition.CurrentValues
-
-            crParameterValues.Clear()
-            crParameterValues.Add(crParameterDiscreteValue)
-            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
-
-            Dim Count As Integer = CheckedListBox1.SelectedItems.Count
-            Dim Count2 As Integer = CheckedListBox1.Items.Count
-            If CheckedListBox1.CheckedItems.Count > 0 Then
-
-
-                crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields
-                crParameterFieldDefinition = crParameterFieldDefinitions.Item("Branch")
-                For i = 0 To Count - 1
-                    If i > 0 Then
-                        crParameterDiscreteValue = Nothing
-                    End If
-                    crParameterDiscreteValue = New ParameterDiscreteValue
-                    crParameterDiscreteValue.Value = CheckedListBox1.CheckedItems(i)
-                    crParameterValues.Add(crParameterDiscreteValue)
-                Next
-
-                crParameterValues.Clear()
-                crParameterValues.Add(crParameterDiscreteValue)
-                crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
-            Else
-            End If
+            DateType = "P"
+            DateFrom = PDFrom.Text
+            DateTo = PDTo.Text
         End If
+
+        cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
+        cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
+
+        FilterReport.Filter(DateType, DateFrom, DateTo, reportType, cryRpt, Branches, i)
+
+        CrystalReportViewer1.ReportSource = cryRpt
+        CrystalReportViewer1.Refresh()
+    End Sub
+
+    Private Sub frmSalesJournal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        connection.Open()
+        Dim command As New SqlCommand("SELECT BPLNAME from OBPL 
+        WHERE MAINBPL = 'N' AND DISABLED = 'N'
+        ORDER BY BPLID ASC", connection)
+        Dim reader As SqlDataReader = command.ExecuteReader()
+        Dim dt As New DataTable()
+        dt.Load(reader)
+        Dim index As Integer = 1
+        For Each dRow As DataRow In dt.Rows
+            CheckedListBox1.Items.Add(dRow.Item("BPLName"))
+        Next
+        connection.Close()
     End Sub
 End Class
