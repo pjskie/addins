@@ -52,24 +52,21 @@ Public Class SLS
                 MsgBox("Please select Quarter", vbInformation, "Info")
                 cbxQuarter.Select()
             Else
-                If clbBranches.CheckedItems.Count > 0 Then
-                    Dim reportType As String = "QAP"
-                    Dim year As Date = cbxYear.SelectedItem.ToString() + "-01-01".ToString()
-                    Dim qtr As String = cbxQuarter.SelectedItem.ToString()
-                    cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
-                    cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
 
-                    Dim crTableLogoninfos As New TableLogOnInfos
-                    Dim crTableLogoninfo As New TableLogOnInfo
-                    Dim crConnectionInfo As New ConnectionInfo
+                Dim reportType As String = "QAP"
+                Dim year As Date = cbxYear.SelectedItem.ToString() + "-01-01".ToString()
+                Dim qtr As String = cbxQuarter.SelectedItem.ToString()
+                cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
+                cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
 
-                    q.generateQuarterlyRep(year, qtr, brnch, cryRpt, i)
-                    cr.ReportSource = cryRpt
-                    cr.Refresh()
-                Else
-                    MsgBox("Please select Branch", vbInformation, "Info")
-                    cbxQuarter.Select()
-                End If
+                Dim crTableLogoninfos As New TableLogOnInfos
+                Dim crTableLogoninfo As New TableLogOnInfo
+                Dim crConnectionInfo As New ConnectionInfo
+
+                q.generateQuarterlyRep(year, qtr, brnch, cryRpt, i)
+                cr.ReportSource = cryRpt
+                cr.Refresh()
+
             End If
         End If
     End Sub
