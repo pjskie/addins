@@ -58,5 +58,12 @@ Public Class ST
         'Clear list box
         clbBranches.Items.Clear()
         quer.loadBranch(clbBranches)
+
+        'check if branches is null
+        If clbBranches.Items.Count > 0 Then
+            'do nothing
+        Else
+            btnGenerateReport.Enabled = False
+        End If
     End Sub
 End Class

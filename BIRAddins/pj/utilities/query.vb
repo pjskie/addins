@@ -8,6 +8,7 @@ Public Class query
     Public SQL As New conn
 
     Public Sub loadBranch(cbl As CheckedListBox)
+
         'Query for the branches
         SQL.ExecQueryDT("SELECT * from OBPL 
                         WHERE MAINBPL = 'N' AND DISABLED = 'N'

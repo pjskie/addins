@@ -15,8 +15,11 @@ Public Class SLS
     Private myReader As SqlDataReader
     Private results As String
     Private quer As New query
+    Private errMsg As String
+    Private ifErr As Boolean = False
 
     Private Sub SLS_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'year
         cbxYear.Text = Date.Now.Year
         For i As Integer = 0 To 9
             cbxYear.Items.Add(Date.Now.Year - i)
@@ -26,11 +29,16 @@ Public Class SLS
         'Clear list box
         clbBranches.Items.Clear()
         quer.loadBranch(clbBranches)
+
+        If clbBranches.Items.Count > 0 Then
+            'do nothing
+        Else
+            btnGenerateReport.Enabled = False
+        End If
+
     End Sub
 
     Private Sub btnGenerateReport_Click(sender As Object, e As EventArgs) Handles btnGenerateReport.Click
-        Dim cryRpt As New ReportDocument
-
         'Dim Count As Integer = clbBranches.CheckedItems.Count
         Dim brnch(100) As String
         Dim i As Integer = 0
