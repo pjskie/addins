@@ -54,56 +54,67 @@ Public Class frmSalesJournal
 
     Private Sub btnGenerateReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerateReport.Click
 
-        Dim cryRpt As New ReportDocument
+        Try
+            Dim cryRpt As New ReportDocument
 
-        Dim Count As Integer = CheckedListBox1.CheckedItems.Count
-        Dim Branches(100) As String
-        Dim i As Integer = 0
+            Dim Count As Integer = CheckedListBox1.CheckedItems.Count
+            Dim Branches(100) As String
+            Dim i As Integer = 0
 
-        For Each itemChecked In CheckedListBox1.CheckedItems
-            Branches(i) = itemChecked.ToString
-            i = i + 1
-        Next
+            For Each itemChecked In CheckedListBox1.CheckedItems
+                Branches(i) = itemChecked.ToString
+                i = i + 1
+            Next
 
 
-        Dim reportType As String = "Sales Journal"
-        Dim form As Form = Me
+            Dim reportType As String = "Sales Journal"
+            Dim form As Form = Me
 
-        Dim DateType As String
-        Dim DateFrom As Date
-        Dim DateTo As Date
+            Dim DateType As String
+            Dim DateFrom As Date
+            Dim DateTo As Date
 
-        If RadioDocument.Checked = True Then
-            DateType = "D"
-            DateFrom = DDFrom.Text
-            DateTo = DDTo.Text
-        Else
-            DateType = "P"
-            DateFrom = PDFrom.Text
-            DateTo = PDTo.Text
-        End If
+            If RadioDocument.Checked = True Then
+                DateType = "D"
+                DateFrom = DDFrom.Text
+                DateTo = DDTo.Text
+            Else
+                DateType = "P"
+                DateFrom = PDFrom.Text
+                DateTo = PDTo.Text
+            End If
 
-        cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
-        cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
+            cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
+            cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
 
-        FilterReport.Filter(DateType, DateFrom, DateTo, reportType, cryRpt, Branches, i)
+            FilterReport.Filter(DateType, DateFrom, DateTo, reportType, cryRpt, Branches, i)
 
-        CrystalReportViewer1.ReportSource = cryRpt
-        CrystalReportViewer1.Refresh()
+            CrystalReportViewer1.ReportSource = cryRpt
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            MsgBox("Error in Generating Sales Journal", vbCrLf, ex.Message)
+        End Try
     End Sub
 
     Private Sub frmSalesJournal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        connection.Open()
-        Dim command As New SqlCommand("SELECT BPLNAME from OBPL 
-        WHERE MAINBPL = 'N' AND DISABLED = 'N'
-        ORDER BY BPLID ASC", connection)
-        Dim reader As SqlDataReader = command.ExecuteReader()
-        Dim dt As New DataTable()
-        dt.Load(reader)
-        Dim index As Integer = 1
-        For Each dRow As DataRow In dt.Rows
-            CheckedListBox1.Items.Add(dRow.Item("BPLName"))
-        Next
-        connection.Close()
+
+        Try
+            connection.Open()
+            Dim command As New SqlCommand("SELECT BPLNAME from OBPL 
+            WHERE MAINBPL = 'N' AND DISABLED = 'N'
+            ORDER BY BPLID ASC", connection)
+            Dim reader As SqlDataReader = command.ExecuteReader()
+            Dim dt As New DataTable()
+            dt.Load(reader)
+            Dim index As Integer = 1
+            For Each dRow As DataRow In dt.Rows
+                CheckedListBox1.Items.Add(dRow.Item("BPLName"))
+            Next
+            connection.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error in Loading Sales Journal" & vbNewLine & vbNewLine & ex.Message)
+            btnGenerateReport.Enabled = False
+        End Try
+
     End Sub
 End Class

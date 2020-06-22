@@ -57,18 +57,20 @@ Public Class frmCashReceiptJournal
 
     Private Sub btnGenerateReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerateReport.Click
 
-        Dim cryRpt As New ReportDocument
+        Try
 
-        Dim Count As Integer = CheckedListBox1.CheckedItems.Count
-        Dim Branches(100) As String
-        Dim i As Integer = 0
+            Dim cryRpt As New ReportDocument
 
-        For Each itemChecked In CheckedListBox1.CheckedItems
-            Branches(i) = itemChecked.ToString
-            i = i + 1
-        Next
+            Dim Count As Integer = CheckedListBox1.CheckedItems.Count
+            Dim Branches(100) As String
+            Dim i As Integer = 0
 
-        Dim reportType As String = "Cash Receipts Journal"
+            For Each itemChecked In CheckedListBox1.CheckedItems
+                Branches(i) = itemChecked.ToString
+                i = i + 1
+            Next
+
+            Dim reportType As String = "Cash Receipts Journal"
             Dim form As Form = Me
 
             Dim DateType As String
@@ -93,29 +95,43 @@ Public Class frmCashReceiptJournal
             CrystalReportViewer1.ReportSource = cryRpt
             CrystalReportViewer1.Refresh()
 
+        Catch ex As Exception
+
+            MsgBox("Error in Generating Cash Receipts Journal", vbCrLf, ex.Message)
+
+        End Try
 
     End Sub
 
     Private Sub frmCashReceiptJournal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        connection.Open()
-        Dim command As New SqlCommand("SELECT BPLNAME from OBPL 
-        WHERE MAINBPL = 'N' AND DISABLED = 'N'
-        ORDER BY BPLID ASC", connection)
-        Dim reader As SqlDataReader = command.ExecuteReader()
-        Dim dt As New DataTable()
-        dt.Load(reader)
-        Dim index As Integer = 1
-        For Each dRow As DataRow In dt.Rows
 
-            'If dRow.Item("Levels") = 1 Then
-            '    CheckedListBox1.Items.Add("-" + dRow.Item("AcctName"))
-            'Else
-            CheckedListBox1.Items.Add(dRow.Item("BPLName"))
-            'End If
+        Try
+            connection.Open()
+            Dim command As New SqlCommand("SELECT BPLNAME from OBPL 
+            WHERE MAINBPL = 'N' AND DISABLED = 'N'
+            ORDER BY BPLID ASC", connection)
 
-        Next
-        connection.Close()
+            Dim reader As SqlDataReader = command.ExecuteReader()
+            Dim dt As New DataTable()
+            dt.Load(reader)
+            Dim index As Integer = 1
+
+            For Each dRow As DataRow In dt.Rows
+
+                'If dRow.Item("Levels") = 1 Then
+                '    CheckedListBox1.Items.Add("-" + dRow.Item("AcctName"))
+                'Else
+                CheckedListBox1.Items.Add(dRow.Item("BPLName"))
+                'End If
+
+            Next
+            connection.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error in Loading Cash Receipts Journal" & vbNewLine & vbNewLine & ex.Message)
+            Me.btnGenerateReport.Enabled = False
+        End Try
+
 
     End Sub
 End Class

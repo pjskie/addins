@@ -57,18 +57,20 @@ Public Class frmCheckDisbursmentJournal
 
     Private Sub btnGenerateReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerateReport.Click
 
-        Dim cryRpt As New ReportDocument
 
-        Dim Count As Integer = CheckedListBox1.CheckedItems.Count
-        Dim Branches(100) As String
-        Dim i As Integer = 0
+        Try
+            Dim cryRpt As New ReportDocument
 
-        For Each itemChecked In CheckedListBox1.CheckedItems
-            Branches(i) = itemChecked.ToString
-            i = i + 1
-        Next
+            Dim Count As Integer = CheckedListBox1.CheckedItems.Count
+            Dim Branches(100) As String
+            Dim i As Integer = 0
 
-        Dim reportType As String = "Check Disbursment Journal"
+            For Each itemChecked In CheckedListBox1.CheckedItems
+                Branches(i) = itemChecked.ToString
+                i = i + 1
+            Next
+
+            Dim reportType As String = "Check Disbursment Journal"
             Dim form As Form = Me
 
             Dim DateType As String
@@ -93,24 +95,38 @@ Public Class frmCheckDisbursmentJournal
             CrystalReportViewer1.ReportSource = cryRpt
             CrystalReportViewer1.Refresh()
 
+        Catch ex As Exception
+            MsgBox("Error in Generating Check Disbursment Journal", vbCrLf, ex.Message)
+        End Try
+
+
 
     End Sub
 
     Private Sub frmCheckDisbursmentJournal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        connection.Open()
-        Dim command As New SqlCommand("SELECT BPLNAME from OBPL 
-        WHERE MAINBPL = 'N' AND DISABLED = 'N'
-        ORDER BY BPLID ASC", connection)
-        Dim reader As SqlDataReader = command.ExecuteReader()
-        Dim dt As New DataTable()
-        dt.Load(reader)
-        Dim index As Integer = 1
-        For Each dRow As DataRow In dt.Rows
 
-            CheckedListBox1.Items.Add(dRow.Item("BPLName"))
+        Try
+            connection.Open()
+            Dim command As New SqlCommand("SELECT BPLNAME from OBPL 
+            WHERE MAINBPL = 'N' AND DISABLED = 'N'
+            ORDER BY BPLID ASC", connection)
+            Dim reader As SqlDataReader = command.ExecuteReader()
+            Dim dt As New DataTable()
+            dt.Load(reader)
+            Dim index As Integer = 1
+            For Each dRow As DataRow In dt.Rows
 
-        Next
-        connection.Close()
+                CheckedListBox1.Items.Add(dRow.Item("BPLName"))
+
+            Next
+            connection.Close()
+
+        Catch ex As Exception
+            MessageBox.Show("Error in Loading Check Disbursment Journal" & vbNewLine & vbNewLine & ex.Message)
+            btnGenerateReport.Enabled = False
+        End Try
+
+
 
     End Sub
 End Class
