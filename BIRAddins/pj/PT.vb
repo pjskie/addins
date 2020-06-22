@@ -14,6 +14,7 @@ Public Class PT
     Private myReader As SqlDataReader
     Private results As String
     Private quer As New query
+    Private errMsg As String
 
     ' Posting Date Paremeter Validations
     Private Sub DDFrom_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DDFrom.ValueChanged
@@ -59,5 +60,12 @@ Public Class PT
         'Clear list box
         clbBranches.Items.Clear()
         quer.loadBranch(clbBranches)
+
+        'check if branches is null
+        If clbBranches.Items.Count > 0 Then
+            'do nothing
+        Else
+            btnGenerateReport.Enabled = False
+        End If
     End Sub
 End Class
