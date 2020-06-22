@@ -46,10 +46,10 @@ Public Class SLS
             Exit Sub
         Else
             If cbxYear.SelectedIndex = -1 Then
-                MsgBox("Please select Year", vbInformation, "Info")
+                MsgBox("Please select Year", vbCritical, "Info")
                 cbxYear.Select()
             ElseIf cbxQuarter.SelectedIndex = -1 Then
-                MsgBox("Please select Quarter", vbInformation, "Info")
+                MsgBox("Please select Quarter", vbCritical, "Info")
                 cbxQuarter.Select()
             Else
 
