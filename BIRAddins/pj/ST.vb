@@ -39,24 +39,19 @@ Public Class ST
             i = i + 1
         Next
 
-        If clbBranches.CheckedItems.Count > 0 Then
+        Dim reportType As String = "ST"
+        Dim DateFrom As Date = DDFrom.Value
+        Dim DateTo As Date = DDTo.Value
+        cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
+        cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
 
-            Dim reportType As String = "ST"
-            Dim DateFrom As Date = DDFrom.Value
-            Dim DateTo As Date = DDTo.Value
-            cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
-            cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
+        Dim crTableLogoninfos As New TableLogOnInfos
+        Dim crTableLogoninfo As New TableLogOnInfo
+        Dim crConnectionInfo As New ConnectionInfo
 
-            Dim crTableLogoninfos As New TableLogOnInfos
-            Dim crTableLogoninfo As New TableLogOnInfo
-            Dim crConnectionInfo As New ConnectionInfo
-
-            q.generateTransactionsRep(DateFrom, DateTo, brnch, cryRpt, i)
-            cr.ReportSource = cryRpt
-            cr.Refresh()
-        Else
-            MsgBox("Please select Branch", vbCritical, "Info")
-        End If
+        q.generateTransactionsRep(DateFrom, DateTo, brnch, cryRpt, i)
+        cr.ReportSource = cryRpt
+        cr.Refresh()
     End Sub
 
     Private Sub ST_Load(sender As Object, e As EventArgs) Handles MyBase.Load
