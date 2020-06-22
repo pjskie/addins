@@ -156,7 +156,7 @@ Public Class FilterReport
                 crParameterDiscreteValue = Nothing
             End If
             crParameterDiscreteValue = New ParameterDiscreteValue()
-            MessageBox.Show(Branches(i))
+            'MessageBox.Show(Branches(i))
             crParameterDiscreteValue.Value = Branches(i)
             crParameterValues.Add(crParameterDiscreteValue)
         Next

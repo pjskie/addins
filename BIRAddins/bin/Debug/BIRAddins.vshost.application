@@ -15,16 +15,12 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
 <<<<<<< HEAD
-        <dsig:DigestValue>whVtVohufu5e8tbrPykRABiUMRw=</dsig:DigestValue>
+        <dsig:DigestValue>PUFfavrbcZBd/ZE8SuPy1991V+E=</dsig:DigestValue>
 =======
 <<<<<<< HEAD
         <dsig:DigestValue>396TCSvbSnpdoDKyKvXpqTo1Xe0=</dsig:DigestValue>
 =======
-<<<<<<< HEAD
-        <dsig:DigestValue>Xt5NyV+jgbeawWvUM10OGrt0jl0=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>m8SuM9npg5uKGNYcdaftsNrQ7CM=</dsig:DigestValue>
->>>>>>> 19959813cd1cd423cf9cc75cc716e7a30e3920ec
+        <dsig:DigestValue>T8hWmyK3nM0vkVrCY1Oenj4J2s0=</dsig:DigestValue>
 >>>>>>> 6111fcc568397351296fd674a0b9c52c5055f2b6
 >>>>>>> cca0435d8cdc2b442fed4dbdd42f9488074e5617
       </hash>
