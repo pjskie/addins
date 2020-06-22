@@ -42,24 +42,24 @@ Public Class frmInventoryBooks
             Branches(x) = WhsCode(CheckedListBox1.Items.IndexOf(itemChecked.ToString))
             x = x + 1
         Next
-        Dim reportType As String = ""
 
-        If Audit.Checked = True Then
-            reportType = "Inventory Books - InvntryAudit"
-        Else
-            reportType = "Inventory Books - InvntryPosting"
-        End If
+        Dim reportType As String = "Inventory Books"
 
+        'If Audit.Checked = True Then
+        '    reportType = "Inventory Books - InvntryAudit"
+        'Else
+        '    reportType = "Inventory Books - InvntryPosting"
+        'End If
 
         Dim DateFrom As Date = DDFrom.Text
-            Dim DateTo As Date = DDTo.Text
+        Dim DateTo As Date = DDTo.Text
 
-            cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
-            cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
+        cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
+        cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
 
-            FilterReport.InventoryBooks(DateFrom, DateTo, cryRpt, Branches)
-            CrystalReportViewer1.ReportSource = cryRpt
-            CrystalReportViewer1.Refresh()
+        FilterReport.InventoryBooks(DateFrom, DateTo, cryRpt, Branches)
+        CrystalReportViewer1.ReportSource = cryRpt
+        CrystalReportViewer1.Refresh()
 
 
     End Sub

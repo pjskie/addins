@@ -103,6 +103,26 @@ Public Class FilterReport
         Dim crParameterValues As New ParameterValues
         Dim crParameterDiscreteValue As New ParameterDiscreteValue
 
+        Dim Count As Integer = frmInventoryBooks.CheckedListBox1.CheckedItems.Count
+        Dim AllWhse As String
+
+        If Count > 0 Then
+            AllWhse = "N"
+        Else
+            AllWhse = "Y"
+        End If
+
+        crParameterDiscreteValue.Value = AllWhse
+        crParameterFieldDefinitions =
+            CryRpt.DataDefinition.ParameterFields
+        crParameterFieldDefinition =
+            crParameterFieldDefinitions.Item("AllWhse")
+        crParameterValues = crParameterFieldDefinition.CurrentValues
+
+        crParameterValues.Clear()
+        crParameterValues.Add(crParameterDiscreteValue)
+        crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+
         crParameterDiscreteValue.Value = DateFrom
         crParameterFieldDefinitions =
             CryRpt.DataDefinition.ParameterFields
@@ -129,7 +149,7 @@ Public Class FilterReport
         crParameterFieldDefinition = crParameterFieldDefinitions("Warehouse")
         crParameterValues = crParameterFieldDefinition.CurrentValues
 
-        Dim Count As Integer = frmInventoryBooks.CheckedListBox1.CheckedItems.Count
+
 
         For i = 0 To Count - 1
             If i > 0 Then

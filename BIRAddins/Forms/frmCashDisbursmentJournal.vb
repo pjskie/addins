@@ -19,7 +19,6 @@ Public Class frmCashDisbursmentJournal
     Private Sub RadioPosting_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioDocument.CheckedChanged
         PDFrom.Enabled = False
         PDTo.Enabled = False
-
         DDFrom.Enabled = True
         DDTo.Enabled = True
     End Sub
@@ -27,7 +26,6 @@ Public Class frmCashDisbursmentJournal
     Private Sub RadioDocument_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioPosting.CheckedChanged
         DDFrom.Enabled = False
         DDTo.Enabled = False
-
         PDFrom.Enabled = True
         PDTo.Enabled = True
     End Sub

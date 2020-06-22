@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmInventoryBooks
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmInventoryBooks
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInventoryBooks))
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
@@ -32,8 +32,6 @@ Partial Class frmInventoryBooks
         Me.DDFrom = New System.Windows.Forms.DateTimePicker()
         Me.DDTo = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Audit = New System.Windows.Forms.RadioButton()
-        Me.Posting = New System.Windows.Forms.RadioButton()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -68,8 +66,6 @@ Partial Class frmInventoryBooks
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Posting)
-        Me.GroupBox1.Controls.Add(Me.Audit)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.CheckedListBox1)
         Me.GroupBox1.Controls.Add(Me.btnGenerateReport)
@@ -89,7 +85,7 @@ Partial Class frmInventoryBooks
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(6, 42)
+        Me.Label1.Location = New System.Drawing.Point(6, 32)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(108, 18)
         Me.Label1.TabIndex = 13
@@ -102,9 +98,9 @@ Partial Class frmInventoryBooks
         Me.CheckedListBox1.CheckOnClick = True
         Me.CheckedListBox1.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Location = New System.Drawing.Point(9, 146)
+        Me.CheckedListBox1.Location = New System.Drawing.Point(9, 83)
         Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.Size = New System.Drawing.Size(364, 424)
+        Me.CheckedListBox1.Size = New System.Drawing.Size(364, 487)
         Me.CheckedListBox1.TabIndex = 10
         Me.CheckedListBox1.ThreeDCheckBoxes = True
         '
@@ -112,7 +108,7 @@ Partial Class frmInventoryBooks
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(6, 124)
+        Me.Label4.Location = New System.Drawing.Point(6, 56)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(82, 18)
         Me.Label4.TabIndex = 11
@@ -124,7 +120,7 @@ Partial Class frmInventoryBooks
         Me.DDFrom.CustomFormat = "MM/dd/yyyy"
         Me.DDFrom.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DDFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DDFrom.Location = New System.Drawing.Point(120, 36)
+        Me.DDFrom.Location = New System.Drawing.Point(120, 26)
         Me.DDFrom.Name = "DDFrom"
         Me.DDFrom.Size = New System.Drawing.Size(110, 26)
         Me.DDFrom.TabIndex = 3
@@ -135,7 +131,7 @@ Partial Class frmInventoryBooks
         Me.DDTo.CustomFormat = "MM/dd/yyyy"
         Me.DDTo.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DDTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DDTo.Location = New System.Drawing.Point(263, 36)
+        Me.DDTo.Location = New System.Drawing.Point(263, 26)
         Me.DDTo.Name = "DDTo"
         Me.DDTo.Size = New System.Drawing.Size(110, 26)
         Me.DDTo.TabIndex = 4
@@ -144,33 +140,11 @@ Partial Class frmInventoryBooks
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(236, 42)
+        Me.Label2.Location = New System.Drawing.Point(236, 32)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(21, 18)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "to"
-        '
-        'Audit
-        '
-        Me.Audit.AutoSize = True
-        Me.Audit.Location = New System.Drawing.Point(9, 68)
-        Me.Audit.Name = "Audit"
-        Me.Audit.Size = New System.Drawing.Size(172, 23)
-        Me.Audit.TabIndex = 14
-        Me.Audit.TabStop = True
-        Me.Audit.Text = "Inventory Audit Report"
-        Me.Audit.UseVisualStyleBackColor = True
-        '
-        'Posting
-        '
-        Me.Posting.AutoSize = True
-        Me.Posting.Location = New System.Drawing.Point(9, 97)
-        Me.Posting.Name = "Posting"
-        Me.Posting.Size = New System.Drawing.Size(166, 23)
-        Me.Posting.TabIndex = 15
-        Me.Posting.TabStop = True
-        Me.Posting.Text = "Inventory Posting List"
-        Me.Posting.UseVisualStyleBackColor = True
         '
         'frmInventoryBooks
         '
@@ -198,6 +172,4 @@ Partial Class frmInventoryBooks
     Friend WithEvents DDTo As DateTimePicker
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents Posting As RadioButton
-    Friend WithEvents Audit As RadioButton
 End Class
