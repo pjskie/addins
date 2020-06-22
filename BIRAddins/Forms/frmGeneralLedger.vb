@@ -30,58 +30,79 @@ Public Class frmGeneralLedger
         End If
     End Sub
     Private Sub frmGeneralLedger_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'where CurrTotal > 0
-        connection.Open()
-        Dim command As New SqlCommand("SELECT Levels, AcctName from OACT where CurrTotal > 0 ORDER BY GROUPMASK, GRPLINE ASC", connection)
-        Dim reader As SqlDataReader = command.ExecuteReader()
-        Dim dt As New DataTable()
-        dt.Load(reader)
-        Dim index As Integer = 1
-        For Each dRow As DataRow In dt.Rows
 
-            'If dRow.Item("Levels") = 1 Then
-            '    CheckedListBox1.Items.Add("-" + dRow.Item("AcctName"))
-            'Else
-            CheckedListBox1.Items.Add(dRow.Item("AcctName"))
-            'End If
+        Try
+            'where CurrTotal > 0
+            connection.Open()
+            Dim command As New SqlCommand("SELECT Levels, AcctName from OACT where CurrTotal > 0 ORDER BY GROUPMASK, GRPLINE ASC", connection)
+            Dim reader As SqlDataReader = command.ExecuteReader()
+            Dim dt As New DataTable()
+            dt.Load(reader)
+            Dim index As Integer = 1
+            For Each dRow As DataRow In dt.Rows
 
-        Next
-        connection.Close()
+                'If dRow.Item("Levels") = 1 Then
+                '    CheckedListBox1.Items.Add("-" + dRow.Item("AcctName"))
+                'Else
+                CheckedListBox1.Items.Add(dRow.Item("AcctName"))
+                'End If
+
+            Next
+            connection.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error in Loading General Ledger" & vbNewLine & vbNewLine & ex.Message)
+            btnGenerateReport.Enabled = False
+        End Try
+
+
 
     End Sub
 
     Private Sub btnGenerateReport_Click(sender As Object, e As EventArgs) Handles btnGenerateReport.Click
 
-        Dim reportType As String = "General Journal"
 
-        Dim DateFrom As Date = DDFrom.Text
-        Dim DateTo As Date = DDTo.Text
-        Dim cryRpt As New ReportDocument
+        Try
+            Dim reportType As String = "General Journal"
 
-        cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
-        cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
+            Dim DateFrom As Date = DDFrom.Text
+            Dim DateTo As Date = DDTo.Text
+            Dim cryRpt As New ReportDocument
+
+            cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
+            cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
 
 
-        FilterReport.GeneralJournal(DateFrom, DateTo, cryRpt)
-        CrystalReportViewer1.ReportSource = cryRpt
-        CrystalReportViewer1.Refresh()
+            FilterReport.GeneralJournal(DateFrom, DateTo, cryRpt)
+            CrystalReportViewer1.ReportSource = cryRpt
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            MsgBox("Error in Generating General Ledger", vbCrLf, ex.Message)
+        End Try
+
+
 
 
     End Sub
 
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
-        CheckedListBox1.Items.Clear()
-        'And where CurrTotal > 0
-        connection.Open()
-        Dim command As New SqlCommand("SELECT AcctName from OACT WHERE ACCTNAME LIKE '%" + txtSearch.Text + "%' And CurrTotal > 0 ORDER BY GROUPMASK, GRPLINE ASC", connection)
-        Dim reader As SqlDataReader = command.ExecuteReader()
-        Dim dt As New DataTable()
-        dt.Load(reader)
 
-        For Each dRow As DataRow In dt.Rows
-            CheckedListBox1.Items.Add(dRow.Item("AcctName"))
-        Next
-        connection.Close()
+        Try
+            CheckedListBox1.Items.Clear()
+            'And where CurrTotal > 0
+            connection.Open()
+            Dim command As New SqlCommand("SELECT AcctName from OACT WHERE ACCTNAME LIKE '%" + txtSearch.Text + "%' And CurrTotal > 0 ORDER BY GROUPMASK, GRPLINE ASC", connection)
+            Dim reader As SqlDataReader = command.ExecuteReader()
+            Dim dt As New DataTable()
+            dt.Load(reader)
+
+            For Each dRow As DataRow In dt.Rows
+                CheckedListBox1.Items.Add(dRow.Item("AcctName"))
+            Next
+            connection.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error in Loading General Ledger" & vbNewLine & vbNewLine & ex.Message)
+            btnGenerateReport.Enabled = False
+        End Try
 
     End Sub
 End Class

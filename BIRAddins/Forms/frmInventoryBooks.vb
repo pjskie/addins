@@ -33,60 +33,72 @@ Public Class frmInventoryBooks
     End Sub
     Public Sub btnGenerateReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerateReport.Click
 
-        Dim cryRpt As New ReportDocument
-        Dim Branches(100) As String
-        Dim x As Integer = 0
+        Try
+            Dim cryRpt As New ReportDocument
+            Dim Branches(100) As String
+            Dim x As Integer = 0
 
-        For Each itemChecked In CheckedListBox1.CheckedItems
-            'MessageBox.Show(WhsCode(CheckedListBox1.Items.IndexOf(itemChecked.ToString)))
-            Branches(x) = WhsCode(CheckedListBox1.Items.IndexOf(itemChecked.ToString))
-            x = x + 1
-        Next
+            For Each itemChecked In CheckedListBox1.CheckedItems
+                'MessageBox.Show(WhsCode(CheckedListBox1.Items.IndexOf(itemChecked.ToString)))
+                Branches(x) = WhsCode(CheckedListBox1.Items.IndexOf(itemChecked.ToString))
+                x = x + 1
+            Next
 
-        Dim reportType As String = "Inventory Books"
+            Dim reportType As String = "Inventory Books"
 
-        'If Audit.Checked = True Then
-        '    reportType = "Inventory Books - InvntryAudit"
-        'Else
-        '    reportType = "Inventory Books - InvntryPosting"
-        'End If
+            'If Audit.Checked = True Then
+            '    reportType = "Inventory Books - InvntryAudit"
+            'Else
+            '    reportType = "Inventory Books - InvntryPosting"
+            'End If
 
-        Dim DateFrom As Date = DDFrom.Text
-        Dim DateTo As Date = DDTo.Text
+            Dim DateFrom As Date = DDFrom.Text
+            Dim DateTo As Date = DDTo.Text
 
-        cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
-        cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
+            cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
+            cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
 
-        FilterReport.InventoryBooks(DateFrom, DateTo, cryRpt, Branches)
-        CrystalReportViewer1.ReportSource = cryRpt
-        CrystalReportViewer1.Refresh()
-
+            FilterReport.InventoryBooks(DateFrom, DateTo, cryRpt, Branches)
+            CrystalReportViewer1.ReportSource = cryRpt
+            CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            MsgBox("Error in Generating Inventory Books", vbCrLf, ex.Message)
+        End Try
 
     End Sub
 
     Public Sub frmInventoryBooks_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Dim i As Integer = 0
+        Try
+            Dim i As Integer = 0
 
-        connection.Open()
-        'Dim command As New SqlCommand("SELECT DISTINCT LOCCODE from OIVL
-        'ORDER BY LOCCODE ASC", connection)
-        Dim command As New SqlCommand("SELECT WhsCode, WhsName from OWHS
-        WHERE DropShip <> 'y'
-        ORDER BY WhsCode ASC", connection)
-        Dim reader As SqlDataReader = command.ExecuteReader()
-        Dim dt As New DataTable()
-        dt.Load(reader)
-        Dim index As Integer = 1
+            connection.Open()
+            'Dim command As New SqlCommand("SELECT DISTINCT LOCCODE from OIVL
+            'ORDER BY LOCCODE ASC", connection)
+            Dim command As New SqlCommand("SELECT WhsCode, WhsName from OWHS
+            WHERE DropShip <> 'y'
+            ORDER BY WhsCode ASC", connection)
+            Dim reader As SqlDataReader = command.ExecuteReader()
+            Dim dt As New DataTable()
+            dt.Load(reader)
+            Dim index As Integer = 1
 
-        For Each dRow As DataRow In dt.Rows
+            For Each dRow As DataRow In dt.Rows
 
-            CheckedListBox1.Items.Add(dRow.Item("WhsName"))
-            WhsCode(i) = dRow.Item("WhsCode")
-            WhsCodeNumber(i) = i
-            i = i + 1
+                CheckedListBox1.Items.Add(dRow.Item("WhsName"))
+                WhsCode(i) = dRow.Item("WhsCode")
+                WhsCodeNumber(i) = i
+                i = i + 1
 
-        Next
-        connection.Close()
+            Next
+            connection.Close()
+
+        Catch ex As Exception
+            MessageBox.Show("Error in Loading Inventory Books" & vbNewLine & vbNewLine & ex.Message)
+            btnGenerateReport.Enabled = False
+        End Try
+
+
+
     End Sub
 End Class

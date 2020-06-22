@@ -13,6 +13,7 @@ Public Class frmCashDisbursmentJournal
     Private myReader As SqlDataReader
     Private results As String
 
+
     Dim connectionString As String = "Server=172.16.50.5;Database=BUILDMORE_MAIN_DB;User Id=sa;Password=Bu1ldm0r3.SBO"
     Dim connection As New SqlConnection(connectionString)
 
@@ -53,24 +54,21 @@ Public Class frmCashDisbursmentJournal
 
     Private Sub btnGenerateReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGenerateReport.Click
 
-        Dim cryRpt As New ReportDocument
-
-        Dim Count As Integer = CheckedListBox1.CheckedItems.Count
-        Dim Branches(100) As String
-        Dim i As Integer = 0
-
-        For Each itemChecked In CheckedListBox1.CheckedItems
-            Branches(i) = itemChecked.ToString
-            i = i + 1
-        Next
-
-
-        Dim reportType As String = "Cash Disbursment Journal"
-            Dim form As Form = Me
-
+        Try
+            Dim cryRpt As New ReportDocument
+            Dim reportType As String = "Cash Disbursment Journal"
             Dim DateType As String
             Dim DateFrom As Date
             Dim DateTo As Date
+            Dim Count As Integer = CheckedListBox1.CheckedItems.Count
+            Dim Branches(100) As String
+            Dim i As Integer = 0
+
+
+            For Each itemChecked In CheckedListBox1.CheckedItems
+                Branches(i) = itemChecked.ToString
+                i = i + 1
+            Next
 
             If RadioDocument.Checked = True Then
                 DateType = "D"
@@ -89,24 +87,42 @@ Public Class frmCashDisbursmentJournal
 
             CrystalReportViewer1.ReportSource = cryRpt
             CrystalReportViewer1.Refresh()
+        Catch ex As Exception
+            MsgBox("Error in Generating Cash Disbursment Journal", vbCrLf, ex.Message)
+        End Try
+
 
 
     End Sub
 
     Private Sub frmCashDisbursmentJournal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        connection.Open()
-        Dim command As New SqlCommand("SELECT BPLNAME from OBPL 
-        WHERE MAINBPL = 'N' AND DISABLED = 'N'
-        ORDER BY BPLID ASC", connection)
-        Dim reader As SqlDataReader = command.ExecuteReader()
-        Dim dt As New DataTable()
-        dt.Load(reader)
-        Dim index As Integer = 1
-        For Each dRow As DataRow In dt.Rows
 
-            CheckedListBox1.Items.Add(dRow.Item("BPLName"))
+        Dim message As String = ""
 
-        Next
-        connection.Close()
+        Try
+            connection.Open()
+            Dim command As New SqlCommand("SELECT BPLNAME from OBPL 
+            WHERE MAINBPL = 'N' AND DISABLED = 'N'
+            ORDER BY BPLID ASC", connection)
+
+            Dim reader As SqlDataReader = command.ExecuteReader()
+            Dim dt As New DataTable()
+            dt.Load(reader)
+            Dim index As Integer = 1
+
+            For Each dRow As DataRow In dt.Rows
+
+                CheckedListBox1.Items.Add(dRow.Item("BPLName"))
+
+            Next
+
+            connection.Close()
+
+        Catch ex As Exception
+            MessageBox.Show("Error in Loading Cash Disbursment Journal" & vbNewLine & vbNewLine & ex.Message)
+            btnGenerateReport.Enabled = False
+        End Try
+
+
     End Sub
 End Class
