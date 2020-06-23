@@ -100,3 +100,4 @@ E:\git\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.application
 E:\git\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.exe
 E:\git\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.xml
 E:\git\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.pdb
+E:\git\ADDINS\BIRAddins\obj\x86\Debug\BIRAddins.vbprojResolveAssemblyReference.cache
