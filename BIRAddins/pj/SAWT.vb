@@ -18,54 +18,46 @@ Public Class SAWT
     Private errMsg As String
 
     Private Sub btnGenerateReport_Click(sender As Object, e As EventArgs) Handles btnGenerateReport.Click
-        errMsg = ""
-        Try
-            Dim cryRpt As New ReportDocument
+        Dim cryRpt As New ReportDocument
 
-            'Dim Count As Integer = clbBranches.CheckedItems.Count
-            Dim brnch(100) As String
-            Dim i As Integer = 0
+        'Dim Count As Integer = clbBranches.CheckedItems.Count
+        Dim brnch(100) As String
+        Dim i As Integer = 0
 
-            For Each itemChecked In clbBranches.CheckedItems
-                brnch(i) = itemChecked.ToString
-                i = i + 1
-            Next
+        For Each itemChecked In clbBranches.CheckedItems
+            brnch(i) = itemChecked.ToString
+            i = i + 1
+        Next
 
-            If cbxYear.SelectedIndex = -1 And cbxQuarter.SelectedIndex = -1 Then
-                MsgBox("Please select Year/Quarter", vbCritical, "Info")
+        If cbxYear.SelectedIndex = -1 And cbxQuarter.SelectedIndex = -1 Then
+            MsgBox("Please select Year/Quarter", vbCritical, "Error")
+            cbxYear.Select()
+            Exit Sub
+        Else
+            If cbxYear.SelectedIndex = -1 Then
+                MsgBox("Please select Year", vbCritical, "Error")
                 cbxYear.Select()
-                Exit Sub
+            ElseIf cbxQuarter.SelectedIndex = -1 Then
+                MsgBox("Please select Quarter", vbCritical, "Error")
+                cbxQuarter.Select()
             Else
-                If cbxYear.SelectedIndex = -1 Then
-                    MsgBox("Please select Year", vbCritical, "Info")
-                    cbxYear.Select()
-                ElseIf cbxQuarter.SelectedIndex = -1 Then
-                    MsgBox("Please select Quarter", vbCritical, "Info")
-                    cbxQuarter.Select()
-                Else
 
-                    Dim reportType As String = "QSAWT"
-                    Dim year As Date = cbxYear.SelectedItem.ToString() + "-01-01".ToString()
-                    Dim qtr As String = cbxQuarter.SelectedItem.ToString()
-                    cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
-                    cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
+                Dim reportType As String = "QSAWT"
+                Dim year As Date = cbxYear.SelectedItem.ToString() + "-01-01".ToString()
+                Dim qtr As String = cbxQuarter.SelectedItem.ToString()
+                cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
+                cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
 
-                    Dim crTableLogoninfos As New TableLogOnInfos
-                    Dim crTableLogoninfo As New TableLogOnInfo
-                    Dim crConnectionInfo As New ConnectionInfo
+                Dim crTableLogoninfos As New TableLogOnInfos
+                Dim crTableLogoninfo As New TableLogOnInfo
+                Dim crConnectionInfo As New ConnectionInfo
 
-                    q.generateQuarterlyRep(year, qtr, brnch, cryRpt, i)
-                    cr.ReportSource = cryRpt
-                    cr.Refresh()
+                q.generateQuarterlyRep(year, qtr, brnch, cryRpt, i)
+                cr.ReportSource = cryRpt
+                cr.Refresh()
 
-                End If
             End If
-        Catch ex As Exception
-            'CAPTURE
-            errMsg = "Error: " & vbNewLine & ex.Message
-        Finally
-            Me.Hide()
-        End Try
+        End If
     End Sub
 
     Private Sub SAWT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
