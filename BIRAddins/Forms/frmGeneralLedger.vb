@@ -10,7 +10,6 @@ Public Class frmGeneralLedger
 
     Dim FilterReport As New FilterReport
 
-
     Private myConn As SqlConnection
     Private myCmd As SqlCommand
     Private myReader As SqlDataReader
@@ -78,9 +77,6 @@ Public Class frmGeneralLedger
         Catch ex As Exception
             MsgBox("Error in Generating General Ledger", vbCrLf, ex.Message)
         End Try
-
-
-
 
     End Sub
 

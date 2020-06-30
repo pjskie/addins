@@ -13,7 +13,7 @@ Public Class frmCreditMemoRegister
     Private myCmd As SqlCommand
     Private myReader As SqlDataReader
     Private results As String
-
+    Private quer As New query
     Dim connectionString As String = "Server=172.16.50.5;Database=BUILDMORE_MAIN_DB;User Id=sa;Password=Bu1ldm0r3.SBO"
     Dim connection As New SqlConnection(connectionString)
 
@@ -98,20 +98,24 @@ Public Class frmCreditMemoRegister
     Private Sub frmCreditMemoRegister_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Try
-            connection.Open()
-            Dim command As New SqlCommand("SELECT BPLNAME from OBPL 
-            WHERE MAINBPL = 'N' AND DISABLED = 'N'
-            ORDER BY BPLID ASC", connection)
-            Dim reader As SqlDataReader = command.ExecuteReader()
-            Dim dt As New DataTable()
-            dt.Load(reader)
-            Dim index As Integer = 1
-            For Each dRow As DataRow In dt.Rows
+            'connection.Open()
+            'Dim command As New SqlCommand("SELECT BPLNAME from OBPL 
+            'WHERE MAINBPL = 'N' AND DISABLED = 'N'
+            'ORDER BY BPLID ASC", connection)
+            'Dim reader As SqlDataReader = command.ExecuteReader()
+            'Dim dt As New DataTable()
+            'dt.Load(reader)
+            'Dim index As Integer = 1
+            'For Each dRow As DataRow In dt.Rows
 
-                CheckedListBox1.Items.Add(dRow.Item("BPLName"))
+            '    CheckedListBox1.Items.Add(dRow.Item("BPLName"))
 
-            Next
-            connection.Close()
+            'Next
+            'connection.Close()
+
+            CheckedListBox1.Items.Clear()
+            quer.loadBranch(CheckedListBox1)
+
         Catch ex As Exception
             MessageBox.Show("Error in Loading Credit Memo Register" & vbNewLine & vbNewLine & ex.Message)
             btnGenerateReport.Enabled = False
