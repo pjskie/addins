@@ -15,7 +15,7 @@ Public Class frmGeneralLedger
     Private myReader As SqlDataReader
     Private results As String
 
-    Dim connectionString As String = "Server=172.16.50.5;Database=BUILDMORE_MAIN_DB;User Id=sa;Password=Bu1ldm0r3.SBO"
+    Dim connectionString As String = "Server=172.16.50.5;Database=BCD_TEST_DB;User Id=sa;Password=Bu1ldm0r3.SBO"
     Dim connection As New SqlConnection(connectionString)
 
     Private Sub DDFrom_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DDFrom.ValueChanged
