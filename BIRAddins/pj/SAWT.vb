@@ -65,10 +65,10 @@ Public Class SAWT
         clbBranches.Items.Clear()
         quer.loadBranch(clbBranches)
 
-        cbxYear.Text = Date.Now.Year
-        For i As Integer = 0 To 9
-            cbxYear.Items.Add(Date.Now.Year - i)
-        Next
+        'cbxYear.Text = Date.Now.Year
+        'For i As Integer = 0 To 9
+        '    cbxYear.Items.Add(Date.Now.Year - i)
+        'Next
         cbxYear.SelectedIndex = -1
 
         'check if branches is null

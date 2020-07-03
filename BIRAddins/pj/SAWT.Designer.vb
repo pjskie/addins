@@ -48,7 +48,7 @@ Partial Class SAWT
         Me.GroupBox1.Size = New System.Drawing.Size(1390, 185)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Search: Quarterly Summary ALphalist of Wittholding Taxed"
+        Me.GroupBox1.Text = "Search: Summary Alphalist of Wittholding Tax"
         '
         'btnGenerateReport
         '
@@ -124,6 +124,7 @@ Partial Class SAWT
         '
         Me.cbxYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbxYear.FormattingEnabled = True
+        Me.cbxYear.Items.AddRange(New Object() {"2022", "2021", "2020"})
         Me.cbxYear.Location = New System.Drawing.Point(154, 37)
         Me.cbxYear.Name = "cbxYear"
         Me.cbxYear.Size = New System.Drawing.Size(168, 27)
