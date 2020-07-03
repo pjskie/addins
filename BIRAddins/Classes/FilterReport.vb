@@ -112,16 +112,16 @@ Public Class FilterReport
             AllWhse = "Y"
         End If
 
-        crParameterDiscreteValue.Value = AllWhse
-        crParameterFieldDefinitions =
-            CryRpt.DataDefinition.ParameterFields
-        crParameterFieldDefinition =
-            crParameterFieldDefinitions.Item("AllWhse")
-        crParameterValues = crParameterFieldDefinition.CurrentValues
+        'crParameterDiscreteValue.Value = AllWhse
+        'crParameterFieldDefinitions =
+        '    CryRpt.DataDefinition.ParameterFields
+        'crParameterFieldDefinition =
+        '    crParameterFieldDefinitions.Item("AllWhse")
+        'crParameterValues = crParameterFieldDefinition.CurrentValues
 
-        crParameterValues.Clear()
-        crParameterValues.Add(crParameterDiscreteValue)
-        crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+        'crParameterValues.Clear()
+        'crParameterValues.Add(crParameterDiscreteValue)
+        'crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
 
         crParameterDiscreteValue.Value = DateFrom
         crParameterFieldDefinitions =

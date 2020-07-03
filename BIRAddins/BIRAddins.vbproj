@@ -113,7 +113,9 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\dbConn.vb" />
     <Compile Include="Classes\FilterReport.vb" />
+    <Compile Include="Classes\Queries.vb" />
     <Compile Include="Forms\frmCashDisbursmentJournal.Designer.vb">
       <DependentUpon>frmCashDisbursmentJournal.vb</DependentUpon>
     </Compile>
