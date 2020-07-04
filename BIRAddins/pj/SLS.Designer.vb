@@ -24,6 +24,7 @@ Partial Class SLS
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.clbBranches = New System.Windows.Forms.CheckedListBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cbxQuarter = New System.Windows.Forms.ComboBox()
@@ -31,7 +32,6 @@ Partial Class SLS
         Me.cbxYear = New System.Windows.Forms.ComboBox()
         Me.btnGenerateReport = New System.Windows.Forms.Button()
         Me.cr = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.clbBranches = New System.Windows.Forms.CheckedListBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -59,6 +59,14 @@ Partial Class SLS
         Me.GroupBox4.TabIndex = 17
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Select Branch:"
+        '
+        'clbBranches
+        '
+        Me.clbBranches.FormattingEnabled = True
+        Me.clbBranches.Location = New System.Drawing.Point(4, 26)
+        Me.clbBranches.Name = "clbBranches"
+        Me.clbBranches.Size = New System.Drawing.Size(546, 114)
+        Me.clbBranches.TabIndex = 1
         '
         'GroupBox2
         '
@@ -105,6 +113,7 @@ Partial Class SLS
         '
         Me.cbxYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbxYear.FormattingEnabled = True
+        Me.cbxYear.Items.AddRange(New Object() {"2022", "2021", "2020"})
         Me.cbxYear.Location = New System.Drawing.Point(171, 40)
         Me.cbxYear.Name = "cbxYear"
         Me.cbxYear.Size = New System.Drawing.Size(168, 27)
@@ -134,14 +143,6 @@ Partial Class SLS
         Me.cr.Size = New System.Drawing.Size(1390, 419)
         Me.cr.TabIndex = 16
         Me.cr.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
-        '
-        'clbBranches
-        '
-        Me.clbBranches.FormattingEnabled = True
-        Me.clbBranches.Location = New System.Drawing.Point(4, 26)
-        Me.clbBranches.Name = "clbBranches"
-        Me.clbBranches.Size = New System.Drawing.Size(546, 114)
-        Me.clbBranches.TabIndex = 1
         '
         'SLS
         '
