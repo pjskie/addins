@@ -61,7 +61,7 @@ Public Class frmGeneralLedger
 
 
         Try
-            Dim reportType As String = "General Journal"
+            Dim reportType As String = "General Ledger"
 
             Dim DateFrom As Date = DDFrom.Text
             Dim DateTo As Date = DDTo.Text
