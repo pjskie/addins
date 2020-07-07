@@ -101,4 +101,21 @@ Public Class frmInventoryBooks
 
 
     End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+
+        If CheckBox1.Checked = False Then
+            Dim checked As Boolean = False
+            For i As Integer = 0 To CheckedListBox1.Items.Count - 1
+                CheckedListBox1.SetItemChecked(i, checked)
+            Next
+        Else
+            Dim checked As Boolean = True
+            For i As Integer = 0 To CheckedListBox1.Items.Count - 1
+                CheckedListBox1.SetItemChecked(i, checked)
+            Next
+        End If
+
+    End Sub
+
 End Class

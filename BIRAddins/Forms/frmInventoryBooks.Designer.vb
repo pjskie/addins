@@ -32,6 +32,7 @@ Partial Class frmInventoryBooks
         Me.DDFrom = New System.Windows.Forms.DateTimePicker()
         Me.DDTo = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -66,6 +67,7 @@ Partial Class frmInventoryBooks
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.CheckBox1)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.CheckedListBox1)
         Me.GroupBox1.Controls.Add(Me.btnGenerateReport)
@@ -98,9 +100,9 @@ Partial Class frmInventoryBooks
         Me.CheckedListBox1.CheckOnClick = True
         Me.CheckedListBox1.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Location = New System.Drawing.Point(9, 83)
+        Me.CheckedListBox1.Location = New System.Drawing.Point(9, 104)
         Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.Size = New System.Drawing.Size(364, 487)
+        Me.CheckedListBox1.Size = New System.Drawing.Size(364, 466)
         Me.CheckedListBox1.TabIndex = 10
         Me.CheckedListBox1.ThreeDCheckBoxes = True
         '
@@ -146,6 +148,16 @@ Partial Class frmInventoryBooks
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "to"
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(9, 77)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(87, 23)
+        Me.CheckBox1.TabIndex = 14
+        Me.CheckBox1.Text = "Check all"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'frmInventoryBooks
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -172,4 +184,5 @@ Partial Class frmInventoryBooks
     Friend WithEvents DDTo As DateTimePicker
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents CheckBox1 As CheckBox
 End Class
