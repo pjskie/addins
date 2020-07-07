@@ -113,7 +113,6 @@ Partial Class SLS
         '
         Me.cbxYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbxYear.FormattingEnabled = True
-        Me.cbxYear.Items.AddRange(New Object() {"2022", "2021", "2020"})
         Me.cbxYear.Location = New System.Drawing.Point(171, 40)
         Me.cbxYear.Name = "cbxYear"
         Me.cbxYear.Size = New System.Drawing.Size(168, 27)

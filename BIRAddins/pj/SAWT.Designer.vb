@@ -23,22 +23,27 @@ Partial Class SAWT
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.dtpTo = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFrom = New System.Windows.Forms.DateTimePicker()
         Me.btnGenerateReport = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.clbBranches = New System.Windows.Forms.CheckedListBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.cbxQuarter = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.cbxYear = New System.Windows.Forms.ComboBox()
+        Me.rd2307 = New System.Windows.Forms.RadioButton()
+        Me.rd2306 = New System.Windows.Forms.RadioButton()
         Me.cr = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.GroupBox3)
         Me.GroupBox1.Controls.Add(Me.btnGenerateReport)
         Me.GroupBox1.Controls.Add(Me.GroupBox4)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
@@ -49,6 +54,55 @@ Partial Class SAWT
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Search: Summary Alphalist of Wittholding Tax"
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Label2)
+        Me.GroupBox3.Controls.Add(Me.Label1)
+        Me.GroupBox3.Controls.Add(Me.dtpTo)
+        Me.GroupBox3.Controls.Add(Me.dtpFrom)
+        Me.GroupBox3.Location = New System.Drawing.Point(6, 102)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(495, 73)
+        Me.GroupBox3.TabIndex = 15
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Select Month:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(276, 32)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(28, 19)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "To:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(24, 32)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(45, 19)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "From:"
+        '
+        'dtpTo
+        '
+        Me.dtpTo.CustomFormat = ""
+        Me.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpTo.Location = New System.Drawing.Point(310, 26)
+        Me.dtpTo.Name = "dtpTo"
+        Me.dtpTo.Size = New System.Drawing.Size(122, 27)
+        Me.dtpTo.TabIndex = 1
+        '
+        'dtpFrom
+        '
+        Me.dtpFrom.CustomFormat = ""
+        Me.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpFrom.Location = New System.Drawing.Point(75, 26)
+        Me.dtpFrom.Name = "dtpFrom"
+        Me.dtpFrom.Size = New System.Drawing.Size(122, 27)
+        Me.dtpFrom.TabIndex = 0
         '
         'btnGenerateReport
         '
@@ -64,9 +118,9 @@ Partial Class SAWT
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.clbBranches)
-        Me.GroupBox4.Location = New System.Drawing.Point(417, 26)
+        Me.GroupBox4.Location = New System.Drawing.Point(507, 26)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(559, 149)
+        Me.GroupBox4.Size = New System.Drawing.Size(469, 149)
         Me.GroupBox4.TabIndex = 16
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Select Branch:"
@@ -74,61 +128,43 @@ Partial Class SAWT
         'clbBranches
         '
         Me.clbBranches.FormattingEnabled = True
-        Me.clbBranches.Location = New System.Drawing.Point(7, 27)
+        Me.clbBranches.Location = New System.Drawing.Point(6, 26)
         Me.clbBranches.Name = "clbBranches"
-        Me.clbBranches.Size = New System.Drawing.Size(546, 114)
+        Me.clbBranches.Size = New System.Drawing.Size(457, 114)
         Me.clbBranches.TabIndex = 0
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Controls.Add(Me.cbxQuarter)
-        Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Controls.Add(Me.cbxYear)
+        Me.GroupBox2.Controls.Add(Me.rd2307)
+        Me.GroupBox2.Controls.Add(Me.rd2306)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 26)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(405, 149)
+        Me.GroupBox2.Size = New System.Drawing.Size(495, 70)
         Me.GroupBox2.TabIndex = 14
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Year and Quarter:"
+        Me.GroupBox2.Text = "Select Form:"
         '
-        'Label2
+        'rd2307
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(42, 83)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(106, 19)
-        Me.Label2.TabIndex = 16
-        Me.Label2.Text = "Select Quarter:"
+        Me.rd2307.AutoSize = True
+        Me.rd2307.Location = New System.Drawing.Point(290, 27)
+        Me.rd2307.Name = "rd2307"
+        Me.rd2307.Size = New System.Drawing.Size(59, 23)
+        Me.rd2307.TabIndex = 1
+        Me.rd2307.TabStop = True
+        Me.rd2307.Text = "2307"
+        Me.rd2307.UseVisualStyleBackColor = True
         '
-        'cbxQuarter
+        'rd2306
         '
-        Me.cbxQuarter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbxQuarter.FormattingEnabled = True
-        Me.cbxQuarter.Items.AddRange(New Object() {"1", "2", "3", "4"})
-        Me.cbxQuarter.Location = New System.Drawing.Point(154, 80)
-        Me.cbxQuarter.Name = "cbxQuarter"
-        Me.cbxQuarter.Size = New System.Drawing.Size(168, 27)
-        Me.cbxQuarter.TabIndex = 15
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(64, 40)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(84, 19)
-        Me.Label1.TabIndex = 14
-        Me.Label1.Text = "Select Year:"
-        '
-        'cbxYear
-        '
-        Me.cbxYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbxYear.FormattingEnabled = True
-        Me.cbxYear.Items.AddRange(New Object() {"2022", "2021", "2020"})
-        Me.cbxYear.Location = New System.Drawing.Point(154, 37)
-        Me.cbxYear.Name = "cbxYear"
-        Me.cbxYear.Size = New System.Drawing.Size(168, 27)
-        Me.cbxYear.TabIndex = 13
+        Me.rd2306.AutoSize = True
+        Me.rd2306.Location = New System.Drawing.Point(128, 27)
+        Me.rd2306.Name = "rd2306"
+        Me.rd2306.Size = New System.Drawing.Size(59, 23)
+        Me.rd2306.TabIndex = 0
+        Me.rd2306.TabStop = True
+        Me.rd2306.Text = "2306"
+        Me.rd2306.UseVisualStyleBackColor = True
         '
         'cr
         '
@@ -159,6 +195,8 @@ Partial Class SAWT
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "BOA - Summary Alphalist of Withholding Taxes"
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
@@ -170,10 +208,13 @@ Partial Class SAWT
     Friend WithEvents btnGenerateReport As Button
     Friend WithEvents cr As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents cbxYear As ComboBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents GroupBox4 As GroupBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents cbxQuarter As ComboBox
     Friend WithEvents clbBranches As CheckedListBox
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents dtpTo As DateTimePicker
+    Friend WithEvents dtpFrom As DateTimePicker
+    Friend WithEvents rd2307 As RadioButton
+    Friend WithEvents rd2306 As RadioButton
 End Class

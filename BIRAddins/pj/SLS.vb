@@ -21,10 +21,10 @@ Public Class SLS
     Private Sub SLS_Load(sender As Object, e As EventArgs) Handles Me.Load
 
         'year
-        'cbxYear.Text = Date.Now.Year
-        'For i As Integer = 0 To 9
-        '    cbxYear.Items.Add(Date.Now.Year - i)
-        'Next
+        cbxYear.Text = Date.Now.Year
+        For i As Integer = 0 To 9
+            cbxYear.Items.Add(Date.Now.Year - i)
+        Next
         cbxYear.SelectedIndex = -1
 
         'Clear list box
