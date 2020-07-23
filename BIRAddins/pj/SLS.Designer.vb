@@ -53,9 +53,9 @@ Partial Class SLS
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.clbBranches)
-        Me.GroupBox4.Location = New System.Drawing.Point(426, 29)
+        Me.GroupBox4.Location = New System.Drawing.Point(472, 26)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(550, 149)
+        Me.GroupBox4.Size = New System.Drawing.Size(741, 157)
         Me.GroupBox4.TabIndex = 17
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Select Branch:"
@@ -65,7 +65,7 @@ Partial Class SLS
         Me.clbBranches.FormattingEnabled = True
         Me.clbBranches.Location = New System.Drawing.Point(4, 26)
         Me.clbBranches.Name = "clbBranches"
-        Me.clbBranches.Size = New System.Drawing.Size(546, 114)
+        Me.clbBranches.Size = New System.Drawing.Size(731, 114)
         Me.clbBranches.TabIndex = 1
         '
         'GroupBox2
@@ -76,7 +76,7 @@ Partial Class SLS
         Me.GroupBox2.Controls.Add(Me.cbxYear)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 26)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(414, 152)
+        Me.GroupBox2.Size = New System.Drawing.Size(460, 157)
         Me.GroupBox2.TabIndex = 15
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Year and Quarter:"
@@ -122,9 +122,9 @@ Partial Class SLS
         '
         Me.btnGenerateReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnGenerateReport.Font = New System.Drawing.Font("Calibri", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle))
-        Me.btnGenerateReport.Location = New System.Drawing.Point(982, 26)
+        Me.btnGenerateReport.Location = New System.Drawing.Point(1219, 84)
         Me.btnGenerateReport.Name = "btnGenerateReport"
-        Me.btnGenerateReport.Size = New System.Drawing.Size(402, 152)
+        Me.btnGenerateReport.Size = New System.Drawing.Size(165, 47)
         Me.btnGenerateReport.TabIndex = 12
         Me.btnGenerateReport.Text = "Generate Report"
         Me.btnGenerateReport.UseVisualStyleBackColor = True

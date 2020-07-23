@@ -70,22 +70,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-<<<<<<< HEAD
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BIRAddins.exe" size="2445312">
-=======
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BIRAddins.exe" size="2444288">
->>>>>>> 6c947f048846c942d47c1cdf395e3dbc83bb8ac2
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BIRAddins.exe" size="2445824">
       <assemblyIdentity name="BIRAddins" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-<<<<<<< HEAD
-        <dsig:DigestValue>72FuZmJ8eoVMwwMeYCDQeLsdtLI=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>yKRuqT+pxZgUmz97wblqAMHk/+Y=</dsig:DigestValue>
->>>>>>> 6c947f048846c942d47c1cdf395e3dbc83bb8ac2
+        <dsig:DigestValue>fUCE2JaonrFeYBWMOdTYc1Zh72k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

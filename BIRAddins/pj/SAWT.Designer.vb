@@ -63,7 +63,7 @@ Partial Class SAWT
         Me.GroupBox3.Controls.Add(Me.dtpFrom)
         Me.GroupBox3.Location = New System.Drawing.Point(6, 102)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(495, 73)
+        Me.GroupBox3.Size = New System.Drawing.Size(460, 77)
         Me.GroupBox3.TabIndex = 15
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Select Month:"
@@ -108,9 +108,9 @@ Partial Class SAWT
         '
         Me.btnGenerateReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnGenerateReport.Font = New System.Drawing.Font("Calibri", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle))
-        Me.btnGenerateReport.Location = New System.Drawing.Point(982, 27)
+        Me.btnGenerateReport.Location = New System.Drawing.Point(1219, 80)
         Me.btnGenerateReport.Name = "btnGenerateReport"
-        Me.btnGenerateReport.Size = New System.Drawing.Size(402, 152)
+        Me.btnGenerateReport.Size = New System.Drawing.Size(165, 47)
         Me.btnGenerateReport.TabIndex = 12
         Me.btnGenerateReport.Text = "Generate Report"
         Me.btnGenerateReport.UseVisualStyleBackColor = True
@@ -118,9 +118,9 @@ Partial Class SAWT
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.clbBranches)
-        Me.GroupBox4.Location = New System.Drawing.Point(507, 26)
+        Me.GroupBox4.Location = New System.Drawing.Point(472, 26)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(469, 149)
+        Me.GroupBox4.Size = New System.Drawing.Size(741, 155)
         Me.GroupBox4.TabIndex = 16
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Select Branch:"
@@ -130,7 +130,7 @@ Partial Class SAWT
         Me.clbBranches.FormattingEnabled = True
         Me.clbBranches.Location = New System.Drawing.Point(6, 26)
         Me.clbBranches.Name = "clbBranches"
-        Me.clbBranches.Size = New System.Drawing.Size(457, 114)
+        Me.clbBranches.Size = New System.Drawing.Size(729, 114)
         Me.clbBranches.TabIndex = 0
         '
         'GroupBox2
@@ -139,7 +139,7 @@ Partial Class SAWT
         Me.GroupBox2.Controls.Add(Me.rd2306)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 26)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(495, 70)
+        Me.GroupBox2.Size = New System.Drawing.Size(460, 70)
         Me.GroupBox2.TabIndex = 14
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Select Form:"
