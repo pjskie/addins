@@ -41,15 +41,9 @@ Public Class SLS
 
     Private Sub btnGenerateReport_Click(sender As Object, e As EventArgs) Handles btnGenerateReport.Click
         Dim cryRpt As New ReportDocument
+        Dim isChecked As Boolean
+        Dim selectedBranch As String = ""
         'Dim Count As Integer = clbBranches.CheckedItems.Count
-        Dim brnch(100) As String
-        Dim i As Integer = 0
-
-        For Each itemChecked In clbBranches.CheckedItems
-            brnch(i) = itemChecked.ToString
-            i = i + 1
-        Next
-
         If cbxYear.SelectedIndex = -1 And cbxQuarter.SelectedIndex = -1 Then
             MsgBox("Please select Year/Quarter", vbCritical, "Error")
             cbxYear.Select()
@@ -62,8 +56,27 @@ Public Class SLS
                 MsgBox("Please select Quarter", vbCritical, "Error")
                 cbxQuarter.Select()
             Else
+                For i As Integer = 0 To clbBranches.Items.Count - 1
+                    If clbBranches.GetItemChecked(i) = True Then
+                        isChecked = True
+                        Exit For
+                    Else
+                    End If
+                Next
 
-                Dim reportType As String = "QAP"
+                If isChecked = True Then
+                    For Each chk As String In clbBranches.CheckedItems
+                        selectedBranch &= "'" + chk & "', "
+                    Next
+                    selectedBranch = selectedBranch.Remove(selectedBranch.Length - 2, 2)
+                ElseIf isChecked = False Then
+
+                    For Each chk As String In clbBranches.Items
+                        selectedBranch &= "'" + chk & "', "
+                    Next
+                    selectedBranch = selectedBranch.Remove(selectedBranch.Length - 2, 2)
+                End If
+                Dim reportType As String = "QAP-L"
                 Dim year As Date = cbxYear.SelectedItem.ToString() + "-01-01".ToString()
                 Dim qtr As String = cbxQuarter.SelectedItem.ToString()
                 cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
@@ -73,7 +86,7 @@ Public Class SLS
                 Dim crTableLogoninfo As New TableLogOnInfo
                 Dim crConnectionInfo As New ConnectionInfo
 
-                q.generateQuarterlyRep(year, qtr, brnch, cryRpt, i)
+                q.generateQuarterlyRep(year, qtr, selectedBranch, cryRpt)
                 cr.ReportSource = cryRpt
                 cr.Refresh()
 

@@ -30,20 +30,34 @@ Public Class PT
     End Sub
 
     Private Sub btnGenerateReport_Click(sender As Object, e As EventArgs) Handles btnGenerateReport.Click
+        Dim isChecked As Boolean
+        Dim selectedBranch As String = ""
         Dim cryRpt As New ReportDocument
-
-        Dim Count As Integer = clbBranches.CheckedItems.Count
-        Dim brnch(100) As String
-        Dim i As Integer = 0
-
-        For Each itemChecked In clbBranches.CheckedItems
-            brnch(i) = itemChecked.ToString
-            i = i + 1
-        Next
-
-        Dim reportType As String = "PT"
+        Dim reportType As String = "PT-L"
         Dim DateFrom As Date = DDFrom.Value
         Dim DateTo As Date = DDTo.Value
+
+        For i As Integer = 0 To clbBranches.Items.Count - 1
+            If clbBranches.GetItemChecked(i) = True Then
+                isChecked = True
+                Exit For
+            Else
+            End If
+        Next
+
+        If isChecked = True Then
+            For Each chk As String In clbBranches.CheckedItems
+                selectedBranch &= "'" + chk & "', "
+            Next
+            selectedBranch = selectedBranch.Remove(selectedBranch.Length - 2, 2)
+        ElseIf isChecked = False Then
+
+            For Each chk As String In clbBranches.Items
+                selectedBranch &= "'" + chk & "', "
+            Next
+            selectedBranch = selectedBranch.Remove(selectedBranch.Length - 2, 2)
+        End If
+
         cryRpt.Load(My.Application.Info.DirectoryPath + "\" + reportType + ".rpt")
         cryRpt.SetDatabaseLogon("sa", "Bu1ldm0r3.SBO")
 
@@ -51,7 +65,7 @@ Public Class PT
         Dim crTableLogoninfo As New TableLogOnInfo
         Dim crConnectionInfo As New ConnectionInfo
 
-        q.generateTransactionsRep(DateFrom, DateTo, brnch, cryRpt, i)
+        q.generateTransactionsRep(DateFrom, DateTo, selectedBranch, cryRpt)
         cr.ReportSource = cryRpt
         cr.Refresh()
     End Sub

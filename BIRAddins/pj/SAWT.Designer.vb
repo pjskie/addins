@@ -178,8 +178,6 @@ Partial Class SAWT
         Me.cr.Name = "cr"
         Me.cr.ShowCloseButton = False
         Me.cr.ShowGroupTreeButton = False
-        Me.cr.ShowParameterPanelButton = False
-        Me.cr.ShowRefreshButton = False
         Me.cr.Size = New System.Drawing.Size(1390, 421)
         Me.cr.TabIndex = 15
         Me.cr.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None

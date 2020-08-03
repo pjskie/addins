@@ -20,14 +20,16 @@ Public Class SAWT
     Private Sub btnGenerateReport_Click(sender As Object, e As EventArgs) Handles btnGenerateReport.Click
         Dim cryRpt As New ReportDocument
         Dim reportType As String = ""
+        Dim selectedBranch As String = ""
+        Dim isChecked As Boolean
         'Dim Count As Integer = clbBranches.CheckedItems.Count
-        Dim brnch(100) As String
-        Dim i As Integer = 0
+        'Dim brnch(100) As String
+        'Dim i As Integer = 0
 
-        For Each itemChecked In clbBranches.CheckedItems
-            brnch(i) = itemChecked.ToString
-            i = i + 1
-        Next
+        'For Each itemChecked In clbBranches.CheckedItems
+        '    brnch(i) = itemChecked.ToString
+        '    i = i + 1
+        'Next
 
         'If cbxYear.SelectedIndex = -1 And cbxQuarter.SelectedIndex = -1 Then
         '    MsgBox("Please select Year/Quarter", vbCritical, "Error")
@@ -66,6 +68,28 @@ Public Class SAWT
         Else
             'do nothing
         End If
+        For i As Integer = 0 To clbBranches.Items.Count - 1
+            If clbBranches.GetItemChecked(i) = True Then
+                isChecked = True
+                Exit For
+            Else
+            End If
+        Next
+
+        If isChecked = True Then
+            For Each chk As String In clbBranches.CheckedItems
+                selectedBranch &= "'" + chk & "', "
+            Next
+            selectedBranch = selectedBranch.Remove(selectedBranch.Length - 2, 2)
+        ElseIf isChecked = False Then
+
+            For Each chk As String In clbBranches.Items
+                selectedBranch &= "'" + chk & "', "
+            Next
+            selectedBranch = selectedBranch.Remove(selectedBranch.Length - 2, 2)
+        Else
+
+        End If
 
         Dim strD As Date = dtpFrom.Value
         Dim stpD As Date = dtpTo.Value
@@ -76,7 +100,7 @@ Public Class SAWT
         Dim crTableLogoninfo As New TableLogOnInfo
         Dim crConnectionInfo As New ConnectionInfo
 
-        q.generateSAWTMonthly(strD, stpD, brnch, cryRpt, i)
+        q.generateSAWTMonthly(strD, stpD, selectedBranch, cryRpt)
         cr.ReportSource = cryRpt
         cr.Refresh()
     End Sub

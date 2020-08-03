@@ -15,9 +15,8 @@ Public Class filterRp
 
     Public Sub generateQuarterlyRep(ByVal y As Date,
                               ByVal q As String,
-                              ByVal b() As String,
-                              ByVal CryRpt As ReportDocument,
-                              ByVal Count As Integer)
+                              ByVal b As String,
+                              ByVal CryRpt As ReportDocument)
         errMsg = ""
         Try
             Dim crParameterFieldDefinitions As ParameterFieldDefinitions
@@ -34,19 +33,15 @@ Public Class filterRp
             crParameterValues.Add(crParameterDiscreteValue)
             crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
 
+            crParameterDiscreteValue.Value = b
             crParameterFieldDefinitions = CryRpt.DataDefinition.ParameterFields
-            crParameterFieldDefinition = crParameterFieldDefinitions("brnch")
+            crParameterFieldDefinition = crParameterFieldDefinitions.Item("branch")
             crParameterValues = crParameterFieldDefinition.CurrentValues
 
-            For i = 0 To Count - 1
-                If i > 0 Then
-                    crParameterDiscreteValue = Nothing
-                End If
-                crParameterDiscreteValue = New ParameterDiscreteValue()
-                crParameterDiscreteValue.Value = b(i)
-                crParameterValues.Add(crParameterDiscreteValue)
-            Next
+            crParameterValues.Clear()
+            crParameterValues.Add(crParameterDiscreteValue)
             crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+
 
             crParameterDiscreteValue.Value = q
             crParameterFieldDefinitions = CryRpt.DataDefinition.ParameterFields
@@ -65,9 +60,8 @@ Public Class filterRp
 
     Public Sub generateTransactionsRep(ByVal str As Date,
                               ByVal stp As Date,
-                              ByVal b() As String,
-                              ByVal CryRpt As ReportDocument,
-                              ByVal Count As Integer)
+                              ByVal b As String,
+                              ByVal CryRpt As ReportDocument)
         errMsg = ""
         Try
             Dim crParameterFieldDefinitions As ParameterFieldDefinitions
@@ -93,19 +87,27 @@ Public Class filterRp
             crParameterValues.Add(crParameterDiscreteValue)
             crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
 
+            crParameterDiscreteValue.Value = b
             crParameterFieldDefinitions = CryRpt.DataDefinition.ParameterFields
-            crParameterFieldDefinition = crParameterFieldDefinitions("brnch")
+            crParameterFieldDefinition = crParameterFieldDefinitions.Item("branch")
             crParameterValues = crParameterFieldDefinition.CurrentValues
 
-            For i = 0 To Count - 1
-                If i > 0 Then
-                    crParameterDiscreteValue = Nothing
-                End If
-                crParameterDiscreteValue = New ParameterDiscreteValue()
-                crParameterDiscreteValue.Value = b(i)
-                crParameterValues.Add(crParameterDiscreteValue)
-            Next
+            crParameterValues.Clear()
+            crParameterValues.Add(crParameterDiscreteValue)
             crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+            'crParameterFieldDefinitions = CryRpt.DataDefinition.ParameterFields
+            'crParameterFieldDefinition = crParameterFieldDefinitions("brnch")
+            'crParameterValues = crParameterFieldDefinition.CurrentValues
+
+            'For i = 0 To Count - 1
+            '    If i > 0 Then
+            '        crParameterDiscreteValue = Nothing
+            '    End If
+            '    crParameterDiscreteValue = New ParameterDiscreteValue()
+            '    crParameterDiscreteValue.Value = b(i)
+            '    crParameterValues.Add(crParameterDiscreteValue)
+            'Next
+            'crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
         Catch ex As Exception
             'CAPTURE
             errMsg = "Error: " & vbNewLine & ex.Message
@@ -116,9 +118,8 @@ Public Class filterRp
 
     Public Sub generateSAWTMonthly(ByVal str As Date,
                               ByVal stp As Date,
-                              ByVal b() As String,
-                              ByVal CryRpt As ReportDocument,
-                              ByVal Count As Integer)
+                              ByVal b As String,
+                              ByVal CryRpt As ReportDocument)
         errMsg = ""
         Try
             Dim crParameterFieldDefinitions As ParameterFieldDefinitions
@@ -144,19 +145,15 @@ Public Class filterRp
             crParameterValues.Add(crParameterDiscreteValue)
             crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
 
+            crParameterDiscreteValue.Value = b
             crParameterFieldDefinitions = CryRpt.DataDefinition.ParameterFields
-            crParameterFieldDefinition = crParameterFieldDefinitions("brnch")
+            crParameterFieldDefinition = crParameterFieldDefinitions.Item("branch")
             crParameterValues = crParameterFieldDefinition.CurrentValues
 
-            For i = 0 To Count - 1
-                If i > 0 Then
-                    crParameterDiscreteValue = Nothing
-                End If
-                crParameterDiscreteValue = New ParameterDiscreteValue()
-                crParameterDiscreteValue.Value = b(i)
-                crParameterValues.Add(crParameterDiscreteValue)
-            Next
+            crParameterValues.Clear()
+            crParameterValues.Add(crParameterDiscreteValue)
             crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
+
         Catch ex As Exception
             'CAPTURE
             errMsg = "Error: " & vbNewLine & ex.Message
