@@ -92,6 +92,7 @@ Public Class ST
         q.generateTransactionsRep(DateFrom, DateTo, selectedBranch, cryRpt)
         cr.ReportSource = cryRpt
         cr.Refresh()
+        cr.Zoom(125)
     End Sub
 
     Private Sub ST_Load(sender As Object, e As EventArgs) Handles MyBase.Load
