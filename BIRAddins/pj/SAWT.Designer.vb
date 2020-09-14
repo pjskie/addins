@@ -66,7 +66,7 @@ Partial Class SAWT
         Me.GroupBox3.Size = New System.Drawing.Size(460, 77)
         Me.GroupBox3.TabIndex = 15
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Select Month:"
+        Me.GroupBox3.Text = "Select Date:"
         '
         'Label2
         '
