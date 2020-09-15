@@ -139,7 +139,7 @@ Partial Class SLS
         Me.cr.Cursor = System.Windows.Forms.Cursors.Default
         Me.cr.Location = New System.Drawing.Point(12, 207)
         Me.cr.Name = "cr"
-        Me.cr.Size = New System.Drawing.Size(1390, 419)
+        Me.cr.Size = New System.Drawing.Size(1346, 419)
         Me.cr.TabIndex = 16
         Me.cr.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
@@ -147,7 +147,7 @@ Partial Class SLS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1414, 636)
+        Me.ClientSize = New System.Drawing.Size(1370, 636)
         Me.Controls.Add(Me.cr)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "SLS"

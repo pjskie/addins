@@ -178,7 +178,7 @@ Partial Class SAWT
         Me.cr.Name = "cr"
         Me.cr.ShowCloseButton = False
         Me.cr.ShowGroupTreeButton = False
-        Me.cr.Size = New System.Drawing.Size(1390, 421)
+        Me.cr.Size = New System.Drawing.Size(1346, 421)
         Me.cr.TabIndex = 15
         Me.cr.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
@@ -186,7 +186,7 @@ Partial Class SAWT
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1414, 636)
+        Me.ClientSize = New System.Drawing.Size(1370, 636)
         Me.Controls.Add(Me.cr)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "SAWT"

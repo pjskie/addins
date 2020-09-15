@@ -1,0 +1,182 @@
+----------------------
+###get_wtaxCommonCOde
+
+DECLARE @cCode AS VARCHAR(10)
+DECLARE @wTaxRecv AS DATE
+
+SET @cCode = $[OINV.CardCode]
+SET @wTaxRecv = $[OINV.U_WTaxRecDate]
+
+SELECT Code FROM [dbo].[@WTAXCODE] 
+WHERE U_cCode = @cCode AND U_wtaxDate = @wTaxRecv 
+ORDER BY Code DESC
+-----------------------
+###get_wtaxCOmmonCodeDpi
+
+DECLARE @cCode AS VARCHAR(10)
+DECLARE @wTaxRecv AS DATE
+
+SET @cCode = $[ODPI.CardCode]
+SET @wTaxRecv = $[ODPI.U_WTaxRecDate]
+
+SELECT  Code FROM [dbo].[@WTAXCODE] 
+WHERE U_cCode = @cCode AND U_wtaxDate = @wTaxRecv 
+ORDER BY Code DESC
+-----------------------
+###get_wtaxCommonCodeCm
+
+DECLARE @inv AS INT
+DECLARE @type AS NVARCHAR(10)
+DECLARE @cmNo AS INT
+DECLARE @cCode AS VARCHAR(10)
+DECLARE @wTaxRecv AS DATE
+
+SET @cCode = $[ORIN.CardCode]
+SET @wTaxRecv = $[ORIN.U_WTaxRecDate]
+SET @cmNo = $[ORIN.DocNum]
+
+SELECT
+	@inv = T.Inv
+	,@type = T.type
+FROM(SELECT DISTINCT
+	T3.DocNum AS [Inv]
+	,T0.DocNum AS [Cm]
+	,'ARDPI' AS [type]
+FROM
+	ORIN T0 INNER JOIN
+	RIN1 T1 ON T0.DocEntry = T1.DocEntry LEFT JOIN
+	DPI1 T2 ON T1.BaseEntry = T2.DocEntry AND T1.BaseLine = T2.LineNum AND T1.BaseType = 203 INNER JOIN
+	ODPI T3 ON T2.DocEntry = T3.DocEntry
+UNION ALL
+SELECT DISTINCT
+	T3.DocNum AS [Inv]
+	,T0.DocNum AS [Cm]
+	,'ARINV' AS [type]
+FROM 
+	ORIN T0 INNER JOIN
+	RIN1 T1 ON T0.DocEntry = T1.DocEntry LEFT JOIN
+	INV1 T2 ON T1.BaseEntry = T2.DocEntry AND T1.BaseLine = T2.LineNum AND T1.BaseType = 13 INNER JOIN
+	OINV T3 ON T2.DocEntry = T3.DocEntry) AS t
+WHERE t.Cm = @cmNo
+
+--SELECT @inv,@type
+
+BEGIN
+	IF @inv IS NOT NULL AND @type IS NOT NULL
+		BEGIN
+			IF @type = 'ARDPI'
+			     BEGIN
+				SELECT U_wtaxComCode FROM ODPI WHERE DocNum = @inv	
+			     END
+			IF @type = 'ARINV'
+			     BEGIN
+				SELECT U_wtaxComCode FROM OINV WHERE DocNum = @inv		
+			     END
+		END
+	IF @inv IS NULL AND @type IS NULL
+		BEGIN
+			DECLARE @invTypeRef AS NVARCHAR(10)
+			DECLARE @invRef AS INT
+
+			SET @invTypeRef = $[ORIN.U_invType]
+			SET @invRef =$[ORIN.U_invDocNum]
+
+			--SET @invTypeRef = 'ARINV'
+			--SET @invRef = '16553'
+
+			IF @invTypeRef = 'ARDPI'
+				BEGIN
+					SELECT U_wtaxComCode FROM ODPI WHERE DocNum = @invRef 
+				END
+			IF @invTypeRef = 'ARINV'
+				BEGIN
+					SELECT U_wtaxComCode FROM OINV WHERE DocNum = @invRef 
+				END
+		END
+END
+-----------------------
+###get_cmRemarks
+
+SELECT CONCAT('BASED ON ',$[ORIN.U_InvType], '#', $[ORIN.U_invDocNum] )
+-----------------------
+UDT
+###get_wtaxCode
+-----------------------
+###get_currentDate
+
+SELECT CONVERT(VARCHAR(10),GetDate(),101)
+-----------------------
+###get_wtax_cardname
+
+SELECT CardName FROM OCRD where cardcode = $[$3.U_cCode.0]
+------------------------
+###get_wtaxCode_name
+
+DECLARE @isExist AS INT
+DECLARE @cCode AS NVARCHAR(10)
+DECLARE @wDate AS DATE
+DECLARE @brnch AS NVARCHAR(50)= (SELECT T2.warehouse FROM OUSR T0
+INNER JOIN OHEM T1 ON T0.userid = T1.userid
+JOIN OUDG T2 ON T2.code = T0.dfltsGroup
+WHERE T0.userId = $[User])
+SET @cCode = $[$3.U_cCode.0]
+SET @wDate = $[$3.U_wtaxDate.0]
+
+--identify if the code is existing
+SELECT @isExist = COUNT(Code) FROM [dbo].[@WTAXCODE] WHERE U_cCode = @cCode AND U_wtaxDate = @wDate
+
+BEGIN
+	IF @isExist > 0
+		BEGIN
+			--COUNT The existing code
+			DECLARE @count AS INT = (SELECT COUNT(*) FROM [dbo].[@WTAXCODE] WHERE U_cCode = @cCode AND U_wtaxDate = @wDate)
+			 
+			SELECT CONCAT(@brnch,'-',@cCode,REPLACE(@wDate,'-',''),'-',@count+1);
+		END
+	ELSE 
+		BEGIN
+			--COUNT The existing code
+			DECLARE @countN AS INT = (SELECT COUNT(*) FROM [dbo].[@WTAXCODE] WHERE U_cCode = @cCode AND U_wtaxDate = @wDate)
+			 
+			SELECT CONCAT(@brnch,'-',@cCode,REPLACE(@wDate,'-',''),'-',@countN+1);
+		END
+END
+-----------------------
+###get_wtaxCode_CardCode
+
+SELECT CardCode,CardName FROM OCRD WHERE WTLiable = 'Y' 
+AND frozenFor = 'N'
+-----------------------
+###get_JEwtaxCode
+
+DECLARE @invType AS NVARCHAR(8)
+DECLARE @invNum AS NVARCHAR(10)
+SELECT @invType =LEFT($[OJDT.Ref1],2) 
+SELECT @invNum = SUBSTRING($[OJDT.Ref1],(PATINDEX('%[#]%',$[OJDT.Ref1])+1),10) 
+--SELECT @invType ,@invNum
+BEGIN
+	--for ARDPI Invocies
+	IF @invType = 'DT'
+		BEGIN
+			SELECT U_wtaxComCode FROM ODPI WHERE ODPI.DocNum = @invNum
+		END
+	--for ARINV Invoices
+	IF @invType = 'IN'
+		BEGIN
+			SELECT U_wtaxComCode FROM OINV WHERE OINV.DocNum = @invNum
+		END
+		--for ARDPI Invocies
+	IF @invType = 'APDPI'
+		BEGIN
+			SELECT U_wtaxComCode FROM ODPO WHERE ODPO.DocNum = @invNum
+		END
+	--for ARINV Invoices
+	IF @invType = 'APINV'
+		BEGIN
+			SELECT U_wtaxComCode FROM OPCH WHERE OPCH.DocNum = @invNum
+		END
+	ELSE
+		BEGIN
+			PRINT  'Invalid'
+		END
+END
